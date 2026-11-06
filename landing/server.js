@@ -15,4 +15,4 @@ http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': types[path.extname(file)] || 'application/octet-stream' });
     res.end(data);
   });
-}).listen(3000, () => console.log('Lengai Trails landing: http://localhost:3000'));
+}).listen(process.env.PORT || 3000, () => console.log('Lengai Trails landing running on port ' + (process.env.PORT || 3000)));
