@@ -371,3 +371,20 @@ h3{font-size:15px}
   .dsplit,.contact,.rhead{grid-template-columns:1fr}.dsplit--flip .dsplit__img{order:0}
   .days{grid-template-columns:1fr}.form .row{grid-template-columns:1fr}
 }
+
+/* ===== Responsive overrides (must stay last) ===== */
+@media(max-width:900px){
+  .about,.group__in{grid-template-columns:1fr}
+  .offers .g3{grid-template-columns:1fr 1fr}
+  .about{gap:24px}
+  .group__in{gap:24px}
+}
+@media(max-width:620px){
+  .offers .g3{grid-template-columns:1fr}
+  .feats{grid-template-columns:1fr}
+  .plist{grid-template-columns:1fr}
+  .collage{grid-template-columns:1fr 1fr}
+  .topbar__in{flex-wrap:wrap;justify-content:center;gap:4px 12px}
+  .topbar__r{display:none}
+  .btn{padding:12px 20px}
+}
