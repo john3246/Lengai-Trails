@@ -1,0 +1,9 @@
+{
+  "name": "lengai-trails",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node landing/server.js"
+  },
+  "engines": { "node": ">=18" }
+}
