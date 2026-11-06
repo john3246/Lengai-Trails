@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: lengai-trails
+    runtime: node
+    rootDir: landing
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
