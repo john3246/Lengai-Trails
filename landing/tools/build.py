@@ -5,7 +5,8 @@ IMG = "assets/img/"
 NAV = [
     ("index.html", "Home", []),
     ("destinations.html", "Destinations", [("Northern Tanzania", "destinations.html#northern"), ("Southern Tanzania", "destinations.html#southern"), ("The Coast", "destinations.html#coast"), ("Mountains", "destinations.html#mountains")]),
-    ("safaris.html", "Safaris", [("All safaris", "safaris.html"), ("Luxury", "safaris.html?f=luxury"), ("Midrange", "safaris.html?f=midrange"), ("Family", "safaris.html?f=family"), ("Honeymoon", "safaris.html?f=honeymoon")]),
+    ("safaris.html", "Safaris", [("All safaris", "safaris.html"), ("Migration", "safaris.html?style=migration"), ("Luxury", "safaris.html?style=luxury"), ("Midrange", "safaris.html?style=midrange"), ("Budget", "safaris.html?style=budget"), ("Family", "safaris.html?style=family"), ("Honeymoon", "safaris.html?style=honeymoon")]),
+    ("packages.html", "All Packages", [("Private safaris", "packages.html?c=safari"), ("Group &amp; joining", "packages.html?c=group"), ("Trekking", "packages.html?c=trekking")]),
     ("group-safari.html", "Group Safari", [("3 Day Joining Safari", "group-safari.html#joining"), ("What is included", "group-safari.html#included")]),
     ("kilimanjaro.html", "Kilimanjaro", [("Climbing routes", "kilimanjaro.html#routes"), ("Why climb with us", "kilimanjaro.html#why")]),
     ("contact.html", "Contact Us", []),
@@ -71,7 +72,7 @@ def header(active):
     <div class="header__r">
       <button class="iconbtn" aria-label="Search">&#9906;</button>
       <span class="lang">EN &#9662;</span>
-      <a class="btn btn--gold btn--sm" href="contact.html">Book Now</a>
+      <a class="btn btn--gold btn--sm" href="book.html">Book Now</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -83,7 +84,7 @@ FOOTER = '''<!-- Footer -->
 <footer class="footer">
   <div class="wrap footer__in">
     <div class="footer__brand"><img src="assets/logo-light.png" alt="Lengai Trails Expeditions"><p class="tagline">Your path to golden memories begins here</p><p>Private safaris, Kilimanjaro climbs and Zanzibar holidays, planned by a locally owned team in Arusha.</p></div>
-    <div><h4>Useful links</h4><a href="index.html">Home</a><a href="safaris.html">Safaris</a><a href="destinations.html">Destinations</a><a href="accommodations.html">Accommodations</a><a href="group-safari.html">Group Safari</a><a href="kilimanjaro.html">Kilimanjaro</a><a href="reviews.html">Reviews</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+    <div><h4>Useful links</h4><a href="index.html">Home</a><a href="safaris.html">Safaris</a><a href="destinations.html">Destinations</a><a href="accommodations.html">Accommodations</a><a href="group-safari.html">Group Safari</a><a href="kilimanjaro.html">Kilimanjaro</a><a href="reviews.html">Reviews</a><a href="faq.html">FAQs</a><a href="blogs.html">Guides</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
     <div><h4>Safari packages</h4><a href="safaris.html">Tanzania safari packages</a><a href="safaris.html?f=luxury">Luxury safari Tanzania</a><a href="safaris.html?f=midrange">Midrange safari Tanzania</a><a href="safaris.html?f=family">Family safari Tanzania</a><a href="safaris.html?f=honeymoon">Honeymoon safari Tanzania</a><a href="group-safari.html">Group joining safaris</a></div>
     <div><h4>Contact us</h4><span>Arusha, Tanzania</span><span>+255 000 000 000</span><span>info@lengaitrails.com</span></div>
   </div>
@@ -91,6 +92,7 @@ FOOTER = '''<!-- Footer -->
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/dynamic.js"></script>
 </body>
 </html>
 '''
@@ -126,9 +128,59 @@ def cta(title="Start planning your Tanzania trip", text="Share your dates, group
 '''
 
 
+
+import re as _re
+_PAGES = ["safaris","packages","destinations","accommodations","group-safari","kilimanjaro","blogs","reviews","faq","about","contact","book"]
+_DET = {"package": "packages", "destination": "destinations", "accommodation": "accommodations", "post": "blogs"}
+def clean_links(html):
+    """Root-absolute, clean URLs so links work from any path depth."""
+    def det(m):
+        return 'href="/%s/%s' % (_DET[m.group(1)], m.group(2))
+    html = _re.sub(r'href="(package|destination|accommodation|post)\.html\?slug=([^"&#]+)', det, html)
+    html = html.replace('href="index.html', 'href="/')
+    for p in _PAGES:
+        html = _re.sub(r'href="%s\.html' % p, 'href="/%s' % p, html)
+    html = _re.sub(r'(href|src|poster)="(?!https?:|/|#|mailto:|tel:|data:|javascript:)([^"]+)"', lambda m: '%s="/%s"' % (m.group(1), m.group(2)), html)
+    html = html.replace('href="/"/', 'href="/"')
+    return html
+
+
+import json as _json, html as _html
+def _norm(t):
+    return _re.sub(r"[^a-z0-9]+", "", _html.unescape(t).lower().replace("–", ""))
+
+def wire_home(h):
+    """Point every home-page card and button at its real page; sync prices with the database packages."""
+    tours = _json.loads((ROOT / "data" / "packages.json").read_text(encoding="utf-8")) + _json.loads((ROOT / "data" / "extra-packages.json").read_text(encoding="utf-8"))
+    by = {_norm(t["title"]): t for t in tours}
+    alias = {"2daysafarifromzanzibar": "2daytarangirengorongorocratersafarifromzanzibar"}
+    def card(m):
+        blk = m.group(0)
+        t = _re.search(r"<h3>(.*?)</h3>", blk, _re.S)
+        k = _norm(t.group(1)) if t else ""
+        tour = by.get(alias.get(k, k))
+        if not tour:
+            return blk
+        blk = _re.sub(r'(<a class="link" href=")[^"]*"', lambda x: x.group(1) + "/packages/" + tour["slug"] + '"', blk)
+        if tour.get("source") != "static-site" and tour.get("price_from"):
+            blk = _re.sub(r"(<strong>USD )[\d,]+(</strong>)", lambda x: x.group(1) + format(tour["price_from"], ",") + x.group(2), blk)
+        return blk
+    h = _re.sub(r'<article class="(?:trip|offer)[^"]*">.*?</article>', card, h, flags=_re.S)
+    for label, to in [("See all holiday packages", "/safaris"), ("View all safaris", "/safaris"), ("View open departures", "/group-safari#joining"),
+                      ("Kilimanjaro climbing", "/kilimanjaro"), ("View Zanzibar", "/safaris?style=zanzibar"), ("All guides", "/blogs")]:
+        h = _re.sub(r'(<a class="btn[^"]*" href=")[^"]*("[^>]*>\s*' + _re.escape(label) + ")", lambda x: x.group(1) + to + x.group(2), h)
+    for name, to in [("Northern Tanzania", "/destinations#northern"), ("The Coast", "/destinations#coast"), ("Southern Tanzania", "/destinations#southern")]:
+        h = _re.sub(r'(<a class="region" href=")[^"]*(">(?:(?!</a>).)*?<h3>' + name + "</h3>)", lambda x: x.group(1) + to + x.group(2), h, flags=_re.S)
+    for name, to in [("Tanzania safari guide", "/blogs/tanzania-safari-guide"), ("Fly-in safaris", "/blogs/fly-in-safaris"), ("Serengeti balloon safari", "/blogs/serengeti-balloon-safari"),
+                     ("Photographic safari", "/blogs/photographic-safari"), ("Camping safari", "/blogs/camping-safari"), ("Nyerere National Park", "/blogs/nyerere-national-park")]:
+        h = _re.sub(r'(<a class="guide" href=")[^"]*(">(?:(?!</a>).)*?<h3>' + name + "</h3>)", lambda x: x.group(1) + to + x.group(2), h, flags=_re.S)
+    h = _re.sub(r'(<a class="guide" href=")#(")', lambda x: x.group(1) + "/blogs" + x.group(2), h)
+    h = h.replace('href="mailto:info@lengaitrails.com">Request a free quote', 'href="/contact">Request a free quote')
+    return h
+
 def page(fname, active, title, desc, body):
     html = head(title, desc) + header(active) + '\n<main id="main">\n' + body + '</main>\n\n' + FOOTER
-    (ROOT / fname).write_text(html, encoding="utf-8")
+    (ROOT / fname).write_text(clean_links(html), encoding="utf-8")
 
 
 # ---------- Destinations ----------
@@ -140,7 +192,7 @@ def dest_block(id_, eyebrow, title, text, img, items, flip=False):
 </div></section>
 '''
 
-dest = phero("Tanzania destinations", "The Northern Circuit for the classic Big Five, the south for wilderness without the crowds, and the coast for white sand and Swahili history.", "ngorongoro-01.webp", "Destinations")
+dest = phero("Tanzania destinations", "The Northern Circuit for the classic Big Five, the south for wilderness without the crowds, and the coast for white sand and Swahili history.", "ngorongoro-09-card.webp", "Destinations")
 dest += dest_block("northern", "Northern Tanzania", "The Northern Circuit", "Tanzania&rsquo;s most popular safari route: huge herds, the world&rsquo;s largest intact caldera and big-cat country, all within reach of Arusha.", "ngorongoro-09-card.webp", [("Serengeti", "Endless plains and the Great Migration"), ("Ngorongoro Crater", "A wildlife-packed volcanic caldera"), ("Tarangire", "Giant baobabs and elephant herds"), ("Lake Manyara", "Tree-climbing lions and flamingos")])
 dest += dest_block("southern", "Southern Tanzania", "Wilderness without the crowds", "Boat safaris, walking safaris and open bush with far fewer vehicles. Ideal for a second visit or a quieter trip.", "ruaha-05-card.webp", [("Nyerere National Park", "Boats, walks and the wild south"), ("Ruaha", "Rugged country and big lion prides"), ("Mikumi", "Easy-access savanna close to Dar es Salaam")], True)
 dest += dest_block("coast", "The Coast", "Zanzibar &amp; the Indian Ocean", "End your safari with white sand beaches, the lanes of Stone Town and spice farms on Zanzibar.", "zanzibar-08-card.webp", [("Stone Town", "Swahili history and winding lanes"), ("Beaches", "Quiet white sand and warm water"), ("Spice farms", "Taste and smell the Spice Island")])
@@ -161,15 +213,23 @@ packages = [
     ("zanzibar-04-card.webp", "8 Days &middot; Luxury", "8 Day Fly Out Luxury Tanzania Safari &amp; Zanzibar Holiday", "Ngorongoro &middot; Serengeti &middot; Zanzibar", "6,185", "luxury"),
     ("ngorongoro-09-card.webp", "6 Days &middot; Mid-range", "6-Day MidRange Tanzania Safari", "Tarangire &middot; Serengeti &middot; Ngorongoro", "2,737", "midrange"),
 ]
-cards = "".join(trip(*p) for p in packages)
-chips = "".join(f'<button class="chip{" is-on" if k == "all" else ""}" data-f="{k}">{l}</button>' for k, l in [("all", "All"), ("luxury", "Luxury"), ("midrange", "Midrange"), ("family", "Family"), ("honeymoon", "Honeymoon")])
-saf = phero("Tanzania safari packages", "Private Tanzania safaris planned by a locally owned team in Arusha, with one clear price that shows exactly what is included.", "serengeti-04.webp", "Safaris")
-saf += f'<section class="sec"><div class="wrap">{sechead("Safaris", "Choose your Tanzania adventure", "Every itinerary can be adjusted to your dates, budget and pace.")}<div class="chips" id="chips">{chips}</div><div class="grid g4" id="tripgrid">{cards}</div></div></section>\n'
+saf = phero("Tanzania safari tours and safari packages", "Every package is priced per person and managed in our CMS, so what you see here is always current.", "serengeti-04.webp", "Tanzania safari tours")
+saf += '''<section class="sec"><div class="wrap">
+<div class="sec__head"><div><p class="eyebrow">Our itineraries</p><h2>Browse Tanzania safaris</h2></div><p>Filter by style, trip length and budget, or search by park. Every itinerary can be adjusted to your dates and pace.</p></div>
+<div class="sfx"><aside class="sffil" id="sffilters" aria-label="Filter safaris"><h3>Filter safaris <button type="button" id="sfclear">Clear all</button></h3>
+<fieldset><legend>Search</legend><input type="search" id="sfq" placeholder="e.g. Serengeti, Zanzibar"></fieldset>
+<fieldset><legend>Package type</legend><div id="sfcat"></div></fieldset>
+<fieldset><legend>Budget per person</legend><input type="range" id="sfmax" min="250" max="8000" step="250" value="8000"><p class="route" id="sfmaxv">Any budget</p></fieldset>
+<fieldset><legend>Trip length</legend><div id="sflen"></div></fieldset>
+<fieldset><legend>Safari style</legend><div id="sfstyle"></div></fieldset></aside>
+<div><div class="sfbar"><p id="sfcount">Loading&hellip;</p><label>Sort by <select id="sfsort"><option value="popular">Most popular</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="days-asc">Shortest first</option><option value="days-desc">Longest first</option></select></label></div>
+<div class="sfgrid" id="sflist"><p>Loading&hellip;</p></div></div></div></div></section>
+'''
 saf += cta()
 page("safaris.html", "safaris.html", "Tanzania Safari Packages", "Browse luxury, midrange, family and honeymoon Tanzania safari packages with clear per-person prices.", saf)
 
 # ---------- Group safari ----------
-grp = phero("Join a group safari", "Share the experience, not the cost. Fixed departures through the Northern Circuit with a professional guide.", "ngorongoro-01.webp", "Group Safari")
+grp = phero("Join a group safari", "Share the experience, not the cost. Fixed departures through the Northern Circuit with a professional guide.", "ngorongoro-09-card.webp", "Group Safari")
 grp += f'''<section class="sec" id="joining"><div class="wrap dsplit">
   <div class="dsplit__img"><img src="{IMG}tarangire-01-card.webp" alt="" loading="lazy"></div>
   <div class="dsplit__t"><p class="eyebrow">Open 2026&ndash;2027</p><h2>3 Day Affordable Joining Safari</h2>
@@ -318,5 +378,92 @@ idx = re.sub(r"<!-- Top bar -->.*?</header>\n", lambda m: header("index.html"), 
 idx = re.sub(r"<!-- Footer -->.*?</footer>\n", lambda m: FOOTER.split("<script")[0], idx, flags=re.S)
 for old, new in [('href="#featured"', 'href="safaris.html"'), ('href="#kilimanjaro"', 'href="kilimanjaro.html"'), ('href="#regions"', 'href="destinations.html"'), ('href="#group"', 'href="group-safari.html"'), ('href="#contact"', 'href="contact.html"'), ('href="#reviews"', 'href="reviews.html"'), ('href="#about"', 'href="about.html"'), ('href="#guides"', 'href="blogs.html"')]:
     idx = idx.replace(old, new)
-(ROOT / "index.html").write_text(idx, encoding="utf-8")
+(ROOT / "index.html").write_text(clean_links(wire_home(idx)), encoding="utf-8")
+
+# ---------- Packages (rendered from the CMS database by js/main.js) ----------
+pk = phero("All packages", "Private safaris, group joining safaris and mountain treks. Every package is managed in our CMS, so prices and itineraries are always current.", "serengeti-04.webp", "Packages")
+pk += '''<section class="sec"><div class="wrap"><div class="sec__head"><div><p class="eyebrow">Packages</p><h2>Find your Tanzania adventure</h2></div><p id="pkcount"></p></div>
+<div class="chips" id="pkchips"><button class="chip is-on" data-f="all">All</button><button class="chip" data-f="safari">Private safaris</button><button class="chip" data-f="group">Group &amp; joining</button><button class="chip" data-f="trekking">Trekking</button></div>
+<div class="grid g4" id="pkgrid"><p>Loading packages&hellip;</p></div></div></section>
+''' + cta()
+page("packages.html", "packages.html", "Tanzania Safari & Trekking Packages", "Browse every Lengai Trails safari, group joining safari and Kilimanjaro or Mount Meru trek with itineraries and prices.", pk)
+
+pd = phero("Package details", "Itinerary, prices and what is included.", "serengeti-04.webp", '<a href="packages.html">Packages</a>')
+pd += '''<section class="sec"><div class="wrap" id="pkdetail"><p>Loading&hellip;</p></div></section>''' + cta()
+page("package.html", "packages.html", "Package details", "Itinerary, prices and inclusions for this Tanzania package.", pd)
+
+# ---------- Database-driven pages ----------
+def sec(inner, mist=False):
+    return f'<section class="sec{" sec--mist" if mist else ""}"><div class="wrap">{inner}</div></section>\n'
+
+# Destinations
+d = phero("Tanzania destinations", "The Northern Circuit for the classic Big Five, the south for wilderness without the crowds, and the coast for white sand and Swahili history.", "ngorongoro-09-card.webp", "Destinations")
+d += sec('<div id="destlist"><p>Loading destinations&hellip;</p></div>') + cta()
+page("destinations.html", "destinations.html", "Tanzania Destinations", "Explore Tanzania by region: the Northern Circuit, the south, Zanzibar and the mountains.", d)
+d = phero("Destination", "", "serengeti-04.webp", '<a href="destinations.html">Destinations</a>')
+d += sec('<div id="destdetail"><p>Loading&hellip;</p></div>') + cta()
+page("destination.html", "destinations.html", "Destination", "Destination details and the packages that visit it.", d)
+
+# Accommodations
+a = phero("Accommodations", "Lodges, tented camps and campsites we use on our itineraries.", "serengeti-02.webp", "Accommodations")
+a += sec('<div id="acclist"><p>Loading accommodations&hellip;</p></div>') + cta()
+page("accommodations.html", "", "Accommodations", "Lodges, tented camps, hotels and campsites used on our Tanzania safaris and climbs.", a)
+a = phero("Accommodation", "", "serengeti-02.webp", '<a href="accommodations.html">Accommodations</a>')
+a += sec('<div id="accdetail"><p>Loading&hellip;</p></div>') + cta()
+page("accommodation.html", "", "Accommodation", "Details of a lodge, camp or hotel used on our Tanzania itineraries.", a)
+
+# Blog
+b = phero("Safari guides &amp; blog", "Plan smarter with our Tanzania safari guides.", "tarangire-17.webp", "Blogs")
+b += sec('<div class="sec__head"><div><p class="eyebrow">Guides</p><h2>Plan smarter with our Tanzania safari guides</h2></div></div><div class="grid g3" id="bloglist"><p>Loading guides&hellip;</p></div>') + cta()
+page("blogs.html", "", "Safari Guides & Blog", "Tanzania safari guides: when to go, fly-in safaris, balloon safaris, photographic and camping safaris.", b)
+b = phero("Safari guide", "", "tarangire-17.webp", '<a href="blogs.html">Guides</a>')
+b += sec('<div id="postdetail"><p>Loading&hellip;</p></div>') + cta()
+page("post.html", "", "Safari guide", "A Lengai Trails safari guide.", b)
+
+# Reviews
+r = phero("Guest reviews", "Independent reviews from Tripadvisor, Google and SafariBookings.", "serengeti-03-card.webp", "Reviews")
+r += sec('<div class="sec__head"><div><p class="eyebrow">Guest reviews</p><h2>What our travellers say</h2></div><p id="revavg"></p></div><div class="grid g3" id="revlist"><p>Loading reviews&hellip;</p></div>')
+r += sec('''<div class="wrap--narrow" style="margin-inline:auto"><form class="form" id="revForm" novalidate><h2>Share your experience</h2><div class="row"><label>Your name<input name="name" required></label><label>Country<input name="country"></label></div><div class="row"><label>Trip you took<input name="tour" placeholder="e.g. 7 Day Serengeti safari"></label><label>Rating<select name="rating"><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label></div><label>Headline<input name="headline"></label><label>Your review<textarea name="text" rows="4" required></textarea></label><button class="btn btn--gold" type="submit">Submit review</button><p class="note" id="revNote" role="status"></p></form></div>''', True) + cta()
+page("reviews.html", "", "Guest Reviews", "Read independent guest reviews of safaris and climbs in Tanzania.", r)
+
+# FAQ
+f = phero("Frequently asked questions", "Answers to the questions we hear most.", "tarangire-13-card.webp", "FAQs")
+f += sec('<div id="faqlist" class="wrap--narrow" style="margin-inline:auto"><p>Loading&hellip;</p></div>') + cta()
+page("faq.html", "", "FAQs", "Frequently asked questions about Tanzania safaris and Kilimanjaro climbs.", f)
+
+# Group safari
+g = phero("Join a group safari", "Share the experience, not the cost. Fixed departures through the Northern Circuit with a professional guide.", "ngorongoro-09-card.webp", "Group Safari")
+g += sec('<div class="sec__head"><div><p class="eyebrow">Fixed departures</p><h2>Upcoming group departures</h2></div><p>Shared 4x4, professional English-speaking guide, lodge or camping nights.</p></div><div id="deplist"><p>Loading departures&hellip;</p></div>')
+g += '''<section class="sec sec--mist" id="joining"><div class="wrap"><div class="sec__head"><div><p class="eyebrow">Group &amp; joining safaris</p><h2>Choose a joining safari</h2></div><p>Price per person with no single supplement on shared vehicles. Pick a package and tell us your dates.</p></div><div class="grid g4" id="grouplist"><p>Loading&hellip;</p></div></div></section>
+<section class="sec" id="included"><div class="wrap"><div class="sec__head"><div><p class="eyebrow">What you get</p><h2>Shared vehicle &middot; Lodge or camp nights</h2></div></div><div class="grid g4">
+<div class="info"><h3>Northern Circuit parks</h3><p>Tarangire, Ngorongoro Crater, Lake Manyara and the Serengeti.</p></div>
+<div class="info"><h3>Shared 4x4 and guide</h3><p>A professional English-speaking guide and a well maintained safari vehicle.</p></div>
+<div class="info"><h3>Nights as per itinerary</h3><p>Lodge or camping accommodation with meals as listed in each package.</p></div>
+<div class="info"><h3>Fees included</h3><p>Park and crater fees are included in the price.</p></div></div></div></section>''' + cta("Ready to join a group safari?", "Tell us your preferred dates and how many travellers. We will confirm the next open departure.")
+page("group-safari.html", "group-safari.html", "Group Joining Safaris", "Affordable shared Tanzania safaris from Arusha covering Tarangire, Ngorongoro, Serengeti and Lake Manyara.", g)
+
+# Kilimanjaro & trekking
+k = phero("Climb Kilimanjaro &amp; trek Tanzania", "Fully supported climbs on six Kilimanjaro routes, plus Mount Meru, Oldoinyo Lengai and the Usambara Mountains.", "kilimanjaro-01.webp", "Kilimanjaro")
+k += '<section class="sec" id="routes"><div class="wrap"><div id="kilist"><p>Loading routes&hellip;</p></div></div></section>\n'
+k += '''<section class="sec sec--mist" id="why"><div class="wrap"><div class="sec__head"><div><p class="eyebrow">Why climb with us</p><h2>Built for the summit</h2></div></div>
+<div class="grid g4">
+<div class="info"><h3>Experienced guides</h3><p>Mountain guides who know every route and every weather window.</p></div>
+<div class="info"><h3>Acclimatisation first</h3><p>Itineraries designed to give your body time to adjust.</p></div>
+<div class="info"><h3>Fully supported</h3><p>Porters, cooks, tents and park fees handled for you.</p></div>
+<div class="info"><h3>Safari add-on</h3><p>Pair your climb with a safari or a Zanzibar beach finish.</p></div>
+</div></div></section>''' + cta("Plan your climb", "Tell us your dates and fitness level and we will recommend the best route.")
+page("kilimanjaro.html", "kilimanjaro.html", "Kilimanjaro Climbing & Trekking", "Fully supported Mount Kilimanjaro climbs on six routes, plus Mount Meru, Oldoinyo Lengai and Usambara treks.", k)
+
+# Booking form
+bk = phero("Book your trip", "Choose a package, your dates and group size. We confirm availability and the final price by email.", "serengeti-04.webp", "Book")
+bk += sec('''<div id="bookWrap" class="pkgrid"><form class="form" id="bookForm" novalidate><h2>Booking request</h2>
+<label>Package<select name="tour_slug" required><option value="">Loading packages&hellip;</option></select></label>
+<div class="row"><label>Start date<input type="date" name="start_date" required></label><label>Travellers<input type="number" name="travelers" min="1" max="40" value="2" required></label></div>
+<div class="row"><label>Full name<input name="name" required autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email"></label></div>
+<div class="row"><label>Phone / WhatsApp<input name="phone" autocomplete="tel"></label><label>Country<input name="country" autocomplete="country-name"></label></div>
+<label>Special requests (diet, ages, fitness, add-ons)<textarea name="notes" rows="4"></textarea></label>
+<button class="btn btn--gold" type="submit">Send booking request</button><p class="note" id="bookNote" role="status"></p></form>
+<aside class="pkside"><div class="pkbox" id="bookEst"></div><div class="pkbox"><p class="meta">How booking works</p><p class="route">1. Send this request. 2. We reply within one working day with availability and the final price. 3. Pay the deposit to confirm. No payment is taken on this page.</p></div></aside></div>''') + cta()
+page("book.html", "", "Book your trip", "Request a booking for a Lengai Trails safari or climb.", bk)
+
 print("built")

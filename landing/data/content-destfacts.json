@@ -1,0 +1,80 @@
+{
+  "serengeti": {
+    "best_time": "January to February and June to October (different areas are best at different times)",
+    "high_season": "July to March (the Seronera area is busy)",
+    "best_weather": "June to October (little to no rain)",
+    "wildlife": "Wildebeest: Abundant\nZebra: Abundant\nGiraffe: Abundant\nBuffalo: Abundant\nHyena: Abundant\nLion: Common\nElephant: Common\nCheetah: Common\nLeopard: Common\nHippo: Common\nWild dog: Rare"
+  },
+  "ngorongoro-crater": {
+    "best_time": "June to October (wildlife viewing is best)",
+    "high_season": "July to March (expect crowds)",
+    "best_weather": "June to October (little to no rain)",
+    "wildlife": "Wildebeest: Abundant\nZebra: Abundant\nBuffalo: Abundant\nHyena: Abundant\nLion: Common\nHippo: Common\nFlamingo: Common\nElephant: Occasional\nCheetah: Occasional\nBlack rhino: Rare"
+  },
+  "tarangire": {
+    "best_time": "June to October (animals gather along the river)",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry)",
+    "wildlife": "Elephant: Abundant\nGiraffe: Abundant\nZebra: Abundant\nWildebeest: Abundant\nImpala: Abundant\nBuffalo: Common\nLion: Common\nLeopard: Occasional\nFringe-eared oryx: Occasional"
+  },
+  "lake-manyara": {
+    "best_time": "June to October for wildlife, and November to April for birds",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry)",
+    "wildlife": "Baboon: Abundant\nBlue monkey: Common\nGiraffe: Common\nElephant: Common\nBuffalo: Common\nHippo: Common\nFlamingo: Seasonal\nLion: Rare"
+  },
+  "lake-eyasi": {
+    "best_time": "June to October (dry and cooler)",
+    "high_season": "July to September",
+    "best_weather": "June to October (little to no rain)",
+    "wildlife": ""
+  },
+  "lengai-natron": {
+    "best_time": "June to October (dry); flamingos usually breed from roughly July to October",
+    "high_season": "July to September",
+    "best_weather": "June to October (little to no rain)",
+    "wildlife": "Flamingo: Seasonal\nZebra: Common\nGiraffe: Occasional"
+  },
+  "mikumi": {
+    "best_time": "June to October (dry)",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry)",
+    "wildlife": "Zebra: Abundant\nWildebeest: Abundant\nGiraffe: Common\nBuffalo: Common\nElephant: Common\nHippo: Common\nLion: Occasional"
+  },
+  "nyerere": {
+    "best_time": "June to October (dry)",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry); some camps close in the wettest months",
+    "wildlife": "Hippo: Abundant\nCrocodile: Abundant\nBuffalo: Abundant\nElephant: Common\nGiraffe: Common\nLion: Common\nWild dog: Occasional"
+  },
+  "ruaha": {
+    "best_time": "June to October (animals gather along the river)",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry)",
+    "wildlife": "Elephant: Abundant\nBuffalo: Abundant\nLion: Common\nGiraffe: Common\nGreater kudu: Common\nLeopard: Occasional\nSable antelope: Occasional\nWild dog: Rare"
+  },
+  "zanzibar": {
+    "best_time": "June to October and January to February (drier, sunnier months)",
+    "high_season": "July to August and December to January",
+    "best_weather": "June to October (dry and cooler)",
+    "wildlife": "Dolphin: Occasional\nRed colobus monkey: Occasional"
+  },
+  "kilimanjaro": {
+    "best_time": "January to March and June to October",
+    "high_season": "July to September",
+    "best_weather": "June to October (driest months)",
+    "wildlife": "Blue monkey: Occasional\nColobus monkey: Occasional"
+  },
+  "mount-meru": {
+    "best_time": "June to February (drier months)",
+    "high_season": "July to October",
+    "best_weather": "June to October (dry)",
+    "wildlife": "Buffalo: Common\nGiraffe: Common\nColobus monkey: Common"
+  },
+  "usambara": {
+    "best_time": "June to October (drier months)",
+    "high_season": "July to September",
+    "best_weather": "June to October (dry); the mountains are cool and can be misty",
+    "wildlife": "Chameleon: Occasional\nBlue monkey: Occasional"
+  }
+}

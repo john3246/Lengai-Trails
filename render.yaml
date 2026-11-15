@@ -6,3 +6,18 @@ services:
     buildCommand: npm install
     startCommand: npm start
     plan: free
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SITE_URL
+        value: https://lengaitrails.com
+      - key: PGSSL
+        value: require
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

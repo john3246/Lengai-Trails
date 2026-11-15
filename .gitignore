@@ -5,3 +5,7 @@ dist/
 build/
 .DS_Store
 Thumbs.db
+landing/data/*.sqlite*
+landing/data/.admin-initial.txt
+landing/assets/uploads/
+.tmp_*

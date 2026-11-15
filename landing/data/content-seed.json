@@ -1,0 +1,57 @@
+{
+  "destinations": [
+    { "name": "Serengeti National Park", "slug": "serengeti", "region": "Northern Tanzania", "keyword": "Serengeti", "image": "assets/img/serengeti-04-card.webp", "summary": "Endless plains and the Great Migration.", "description": "Tanzania's most famous park: huge herds, big-cat country and the Great Wildebeest Migration, which crosses the Mara River in the north from July to October and calves around Ndutu in the south from December to March.", "status": "published" },
+    { "name": "Ngorongoro Crater", "slug": "ngorongoro-crater", "region": "Northern Tanzania", "keyword": "Ngorongoro", "image": "assets/img/ngorongoro-09-card.webp", "summary": "A wildlife-packed volcanic caldera.", "description": "The world's largest intact caldera. A full-day game drive on the crater floor offers open grasslands, woodland and wetlands with dense wildlife.", "status": "published" },
+    { "name": "Tarangire National Park", "slug": "tarangire", "region": "Northern Tanzania", "keyword": "Tarangire", "image": "assets/img/tarangire-01-card.webp", "summary": "Giant baobabs and big elephant herds.", "description": "Known for scenic baobab landscapes, large elephant herds and excellent game viewing, and an easy first stop from Arusha.", "status": "published" },
+    { "name": "Lake Manyara National Park", "slug": "lake-manyara", "region": "Northern Tanzania", "keyword": "Manyara", "image": "assets/img/tarangire-13-card.webp", "summary": "Woodland, forest and lake scenery.", "description": "A different landscape from the other Northern Circuit parks, with forest, woodland and a lake setting for game viewing.", "status": "published" },
+    { "name": "Lake Eyasi", "slug": "lake-eyasi", "region": "Northern Tanzania", "keyword": "Eyasi", "image": "assets/img/tarangire-15-card.webp", "summary": "Cultural visits with the Hadzabe and Datoga.", "description": "A soda lake region where visitors can meet the Hadzabe hunter-gatherer community and the Datoga people.", "status": "published" },
+    { "name": "Oldoinyo Lengai & Lake Natron", "slug": "lengai-natron", "region": "Northern Tanzania", "keyword": "Natron", "image": "assets/img/kilimanjaro-04-card.webp", "summary": "The Mountain of God and a flamingo lake.", "description": "An active volcano rising from the Great Rift Valley, known to the Maasai as the Mountain of God, beside the red and pink waters of Lake Natron.", "status": "published" },
+    { "name": "Mikumi National Park", "slug": "mikumi", "region": "Southern Tanzania", "keyword": "Mikumi", "image": "assets/img/ruaha-05-card.webp", "summary": "Easy-access savanna close to Dar es Salaam.", "description": "Open plains and woodland that are easy to reach, including by flight from Zanzibar.", "status": "published" },
+    { "name": "Nyerere National Park", "slug": "nyerere", "region": "Southern Tanzania", "keyword": "Nyerere", "image": "assets/img/selous-05.webp", "summary": "Boats, walks and the wild south.", "description": "Boat safaris, walking safaris and open bush with far fewer vehicles.", "status": "published" },
+    { "name": "Ruaha National Park", "slug": "ruaha", "region": "Southern Tanzania", "keyword": "Ruaha", "image": "assets/img/ruaha-05-card.webp", "summary": "Rugged country and big lion prides.", "description": "Rugged wilderness with large lion prides, ideal for a second visit or a quieter trip.", "status": "published" },
+    { "name": "Zanzibar", "slug": "zanzibar", "region": "The Coast", "keyword": "Zanzibar", "image": "assets/img/zanzibar-08-card.webp", "summary": "Stone Town, white sand and spice farms.", "description": "End your safari with quiet white-sand beaches, the lanes of Stone Town and spice farms on the Spice Island.", "status": "published" },
+    { "name": "Mount Kilimanjaro", "slug": "kilimanjaro", "region": "Mountains", "keyword": "Kilimanjaro", "image": "assets/img/kilimanjaro-01-card.webp", "summary": "Africa's highest peak.", "description": "Climb Africa's highest mountain on Marangu, Machame, Lemosho, Rongai, Umbwe or the Northern Circuit route.", "status": "published" },
+    { "name": "Mount Meru", "slug": "mount-meru", "region": "Mountains", "keyword": "Meru", "image": "assets/img/kilimanjaro-06-card.webp", "summary": "Tanzania's second-highest mountain.", "description": "At 4,566 m in Arusha National Park, Meru offers forest, wildlife and alpine terrain, and works well as an acclimatisation trek.", "status": "published" },
+    { "name": "Usambara Mountains", "slug": "usambara", "region": "Mountains", "keyword": "Usambara", "image": "assets/img/kilimanjaro-08-card.webp", "summary": "Misty forests, villages and viewpoints.", "description": "A cool, green highland region of forests, terraced farms and traditional villages around Lushoto.", "status": "published" }
+  ],
+  "accommodations": [
+    { "name": "Moyo Tented Camp", "category": "Tented camp", "location": "Northern Serengeti" },
+    { "name": "Ang'ata Migration Camp", "category": "Tented camp", "location": "Ndutu, Southern Serengeti" },
+    { "name": "Safari Haven Migration Camp", "category": "Tented camp", "location": "Northern Serengeti" },
+    { "name": "Nakupenda Luxury Camp", "category": "Tented camp", "location": "Central Serengeti" },
+    { "name": "Farm of Dreams Lodge", "category": "Lodge", "location": "Karatu" },
+    { "name": "Fig Tree Lodge", "category": "Lodge", "location": "Mto wa Mbu" },
+    { "name": "Mawe Mawe Manyara Lodge", "category": "Lodge", "location": "Lake Manyara" },
+    { "name": "Ngorongoro Serena Safari Lodge", "category": "Lodge", "location": "Ngorongoro" },
+    { "name": "Kubu Kubu Tented Lodge", "category": "Tented camp", "location": "Tarangire" },
+    { "name": "Masek Tented Lodge", "category": "Tented camp", "location": "Ngorongoro highlands" },
+    { "name": "Lake Eyasi Safari Lodge", "category": "Lodge", "location": "Lake Eyasi" },
+    { "name": "Lake Natron Tented Camp", "category": "Tented camp", "location": "Lake Natron" },
+    { "name": "Kibo Palace Hotel", "category": "Hotel", "location": "Arusha" },
+    { "name": "Gold Crest Hotel", "category": "Hotel", "location": "Arusha" },
+    { "name": "Tulia Boutique Hotel & Spa", "category": "Hotel", "location": "Arusha" },
+    { "name": "Njiro Legacy Hotel", "category": "Hotel", "location": "Arusha" },
+    { "name": "Karibu Heritage House", "category": "Hotel", "location": "Arusha" },
+    { "name": "Grand Melia Arusha", "category": "Hotel", "location": "Arusha" },
+    { "name": "Seronera Public Campsite", "category": "Camp", "location": "Central Serengeti" },
+    { "name": "Nyani Public Campsite", "category": "Camp", "location": "Serengeti" },
+    { "name": "Tarangire Public Campsite", "category": "Camp", "location": "Tarangire" },
+    { "name": "Simba B Campsite", "category": "Camp", "location": "Ngorongoro crater rim" }
+  ],
+  "reviews": [
+    { "name": "Tal", "country": "Israel", "rating": 5, "tour": "Safari", "date": "2026-07-31", "text": "We had great time. Everything was organised well, we had no worries. The communication with the office was very easy and good all along.", "headline": "Great experience" },
+    { "name": "Verified traveller", "country": "", "rating": 5, "tour": "Safari", "text": "Everything went smoothly from the very first contact through to the end of the safari. They took the time to brief me properly and ensured everything was clear.", "headline": "Very attentive and considerate" },
+    { "name": "Verified traveller", "country": "", "rating": 5, "tour": "Safari", "text": "It was a super organized trip, all that we wanted was included, we didn't have to worry about anything. They are very friendly and professional.", "headline": "Amazing experience, like a trip with the best friends" },
+    { "name": "Verified traveller", "country": "", "rating": 5, "tour": "Safari", "text": "While in Tanzania I wanted to see a bit of the country and the visit would not be complete without a safari. The whole team was helpful from start to finish.", "headline": "An unforgettable experience" },
+    { "name": "Verified traveller", "country": "", "rating": 5, "tour": "Safari", "text": "The safari exceeded our expectations. We were well taken care of at all times and the staff went above and beyond to make our trip truly unforgettable.", "headline": "Delivered an experience beyond our expectations" },
+    { "name": "Verified traveller", "country": "", "rating": 5, "tour": "Safari", "text": "Very communicative, super on time, and went above and beyond to make sure we were alright. It all felt very reliable.", "headline": "Welcoming and supportive, an excellent host" }
+  ],
+  "blog": [
+    { "title": "Tanzania safari guide", "excerpt": "When to go, which parks, what it costs", "image": "assets/img/serengeti-04.webp" },
+    { "title": "Fly-in safaris", "excerpt": "Bush flights, baggage limits, when they pay off", "image": "assets/img/selous-04.webp" },
+    { "title": "Serengeti balloon safari", "excerpt": "What to expect and how to book", "image": "assets/img/serengeti-02.webp" },
+    { "title": "Photographic safari", "excerpt": "Best parks, months and vehicle set-up", "image": "assets/img/tarangire-17.webp" },
+    { "title": "Camping safari", "excerpt": "What it is really like in the bush", "image": "assets/img/selous-01.webp" },
+    { "title": "Nyerere National Park", "excerpt": "Boats, walks and the wild south", "image": "assets/img/selous-05.webp" }
+  ]
+}
