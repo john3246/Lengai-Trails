@@ -12,7 +12,7 @@ const slugify = s => String(s || '').toLowerCase().replace(/&/g, 'and').replace(
 async function run(pool) {
   await ddl.ensure(pool);
   const done = (await pool.query("SELECT value FROM settings WHERE key = 'relational_v1'")).rows[0];
-  if (done) { await rewriteTours(pool); return; }
+  if (done) { await rewriteTours(pool); await rewriteItineraries(pool); return; }
   const hasLegacy = async t => (await pool.query('SELECT to_regclass($1) r', [t])).rows[0].r;
   const c = await pool.connect();
   try {
@@ -76,6 +76,7 @@ async function run(pool) {
   } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); }
   await seedDestinations(pool);
   await rewriteTours(pool);
+  await rewriteItineraries(pool);
 }
 // A fresh install gets the full destination guides from data/content-destinations.json (original text), once.
 async function seedDestinations(pool) {
@@ -103,6 +104,27 @@ async function rewriteTours(pool) {
     }
     await c.query("INSERT INTO settings (key, value) VALUES ('rewrite_cms_v1', '1') ON CONFLICT (key) DO NOTHING");
     await c.query('COMMIT'); console.log('[cms] rewrote text for ' + Object.keys(rw).length + ' packages');
+  } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); }
+}
+// Original day-by-day text (data/rewrite-itineraries-v1.json), applied once. Meals, lodging and other day details stay as they are.
+async function rewriteItineraries(pool) {
+  const f = require('path').join(process.env.DATA_DIR || require('path').join(__dirname, '..', 'data'), 'rewrite-itineraries-v1.json');
+  const fs = require('fs'); if (!fs.existsSync(f)) return;
+  if ((await pool.query("SELECT value FROM settings WHERE key = 'rewrite_itin_v1'")).rows[0]) return;
+  const rw = JSON.parse(fs.readFileSync(f, 'utf8')), c = await pool.connect();
+  try {
+    await c.query('BEGIN');
+    for (const [slug, days] of Object.entries(rw)) {
+      const t = (await c.query('SELECT id FROM cms_tours WHERE slug = $1', [slug])).rows[0]; if (!t) continue;
+      for (const d of days) {
+        const row = (await c.query('SELECT id FROM cms_tour_days WHERE tour_id = $1 AND day = $2', [t.id, d.day])).rows[0]; if (!row) continue;
+        await c.query('UPDATE cms_tour_days SET title = $1 WHERE id = $2', [d.title, row.id]);
+        await c.query('DELETE FROM cms_tour_day_text WHERE day_id = $1', [row.id]);
+        for (let i = 0; i < d.body.length; i++) await c.query('INSERT INTO cms_tour_day_text (day_id, pos, body) VALUES ($1, $2, $3)', [row.id, i, d.body[i]]);
+      }
+    }
+    await c.query("INSERT INTO settings (key, value) VALUES ('rewrite_itin_v1', '1') ON CONFLICT (key) DO NOTHING");
+    await c.query('COMMIT'); console.log('[cms] rewrote itineraries for ' + Object.keys(rw).length + ' packages');
   } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); }
 }
 module.exports = { run };
