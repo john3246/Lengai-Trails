@@ -4,7 +4,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const root = __dirname;
-const { admin, pub, send } = require('./cms/api');
+const { admin, preview, send } = require('./cms/admin');
+const { pub } = require('./cms/public');
 const seo = require('./cms/seo');
 const zlib = require('zlib');
 
@@ -12,7 +13,7 @@ const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json',
   '.png': 'image/png', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.gif': 'image/gif', '.ico': 'image/x-icon'
 };
-const BLOCKED = /^\/(data|cms)(\/|$)/; // never serve the database / server code as static files
+const BLOCKED = /^\/(data|cms|admin|node_modules|tools)(\/|$)|\/\.|\.(env|json|md|log|sql)$/i; // never serve server code, data or dotfiles as static files
 
 function sendText(req, res, type, body, extra = {}) {
   const h = { 'Content-Type': type, 'X-Content-Type-Options': 'nosniff', ...extra };
@@ -41,9 +42,18 @@ const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, 'http://x');
     let p = decodeURIComponent(url.pathname);
+    // security headers
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', p.startsWith('/cms/preview') ? 'SAMEORIGIN' : p.startsWith('/cms') ? 'DENY' : 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+    if (process.env.NODE_ENV === 'production' || (req.headers['x-forwarded-proto'] || '') === 'https') res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+    if (p.startsWith('/cms') && !p.startsWith('/cms/preview')) res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; frame-src 'self'; frame-ancestors 'self'; base-uri 'none'; form-action 'self'");
 
     if (p.startsWith('/cms') || p.startsWith('/api/')) res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     if (p.startsWith('/cms/api/')) return await admin(req, res, url);
+    if (p.startsWith('/cms/preview/')) return await preview(req, res, url);
     if (p.startsWith('/api/')) return await pub(req, res, url);
     if (p === '/cms' || p === '/cms/') return serveFile(res, path.join(root, 'admin', 'index.html'), { 'Cache-Control': 'no-store' });
     if (p.startsWith('/cms/')) {

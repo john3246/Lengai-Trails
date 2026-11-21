@@ -1,0 +1,92 @@
+{
+  "serengeti": {
+    "highlights": ["The Great Migration: Around 1.5 million wildebeest, with zebra and gazelle, follow the rains in a great loop through the Serengeti and into Kenya's Maasai Mara.", "Big cats: Lions, leopards and cheetahs are seen regularly, particularly around the Seronera valley and the open southern plains.", "Seronera valley: Year-round water draws wildlife, making it a dependable area for game drives in any month.", "Kopjes: Granite outcrops rise from the plains and are favourite lookouts for lions and cheetahs.", "Endless horizons: The wide skies and golden grass are some of the best landscapes in Africa for photography."],
+    "activities": ["Morning and afternoon game drives", "Sunrise hot-air balloon flight", "Bush picnic lunches on the plains", "Watching river crossings in the north (usually July to October)", "Photography from an open-roof vehicle"],
+    "getting_there": "Most guests drive from Arusha through Lake Manyara or Tarangire and Ngorongoro, which takes a full day to the central Serengeti, or fly from Arusha, Manyara or Zanzibar to an airstrip such as Seronera in about an hour and a half.",
+    "tips": ["The herds move with the rain, so tell us your dates and we will place you in the right part of the park.", "Start early: animals are most active at first light and in the late afternoon.", "Bring binoculars, a hat and a light scarf for the dust.", "Park fees and the safari vehicle are included in our packages."]
+  },
+  "ngorongoro-crater": {
+    "highlights": ["The caldera: One of the largest unbroken volcanic craters in the world, about 600 metres deep and 20 kilometres across.", "Black rhino: The crater is one of the few places in Tanzania where this rare animal is seen with some regularity.", "Dense wildlife: Lions, elephants, hippos, buffalo, zebra and wildebeest share a small, easy-to-cover floor.", "Lake Magadi: A shallow soda lake that attracts flamingos at certain times of year.", "Olduvai Gorge: Nearby, a famous site in the study of early human origins, with a small museum."],
+    "activities": ["Crater floor game drive (limited to about six hours)", "Picnic lunch beside the Ngoitokitok springs", "Visit to Olduvai Gorge and its museum", "Guided hike to Empakaai Crater", "Cultural visit to a Maasai village on the highlands"],
+    "getting_there": "The crater rim is about three hours by road from Arusha through Mto wa Mbu and Karatu on tarmac, followed by a steep gravel track down to the floor in a 4x4 safari vehicle.",
+    "tips": ["The rim sits at roughly 2,300 metres and mornings are cold, so bring a warm jacket.", "Descend at first light to enjoy the floor before the other vehicles arrive.", "Visitors may stay on the floor for a limited time each day, so plan your picnic stop in advance.", "Keep a camera with a zoom lens ready for the rhinos, which are often far away."]
+  },
+  "tarangire": {
+    "highlights": ["Elephant herds: In the dry season large family groups gather along the Tarangire River, and the park is known for big tuskers.", "Baobab trees: Huge, ancient baobabs dot the hills and make striking photographs.", "Dry-season concentrations: Zebra, wildebeest, buffalo and antelope crowd the river when water elsewhere dries up.", "Birdlife: Hundreds of species are recorded, including the colourful yellow-collared lovebird and many raptors.", "Quiet roads: Fewer vehicles than the Serengeti or Ngorongoro, with long stretches of peaceful scenery."],
+    "activities": ["Game drives along the river", "Bird watching, especially in the green season", "Picnic lunches under the baobabs", "Walking and night safaris in neighbouring conservation areas, arranged separately"],
+    "getting_there": "Tarangire is about two to two and a half hours by road from Arusha on a good surface, which makes it a convenient first stop on a northern circuit.",
+    "tips": ["The dry months from June to October give the best game viewing.", "Tsetse flies can be a nuisance in some areas, so wear neutral clothes and avoid dark blue and black.", "Stay at least one night to see the park at dawn and dusk.", "It combines well with Lake Manyara, Ngorongoro and the Serengeti."]
+  },
+  "lake-manyara": {
+    "highlights": ["Tree-climbing lions: Lions here are famous for resting in the branches, although it is never guaranteed.", "Groundwater forest: Shady mahogany and fig trees full of baboons and blue monkeys greet you at the gate.", "The lake: Flamingos and pelicans line the shore when water levels are right, with hippos in the pools.", "The escarpment: The Rift Valley wall rises behind the park and gives dramatic views.", "Canopy walkway: A treetop walkway lets you see the forest from above."],
+    "activities": ["Half-day or full-day game drive", "Treetop canopy walk", "Bird watching", "Cultural tour and bicycle ride in nearby Mto wa Mbu village"],
+    "getting_there": "The park is about two hours from Arusha by road and lies on the way to Ngorongoro and the Serengeti, so it slots easily into most northern itineraries.",
+    "tips": ["A half day is enough for most guests.", "Water levels change through the year, which affects how many birds you will see on the lake.", "Bring binoculars for the birds and the monkeys in the forest.", "Combine it with Mto wa Mbu village for local food and crafts."]
+  },
+  "lake-eyasi": {
+    "highlights": ["The Hadzabe: One of the last hunter-gatherer communities in Africa, who share their way of life with respectful visitors.", "The Datoga: Skilled blacksmiths and herders who make jewellery and tools by hand.", "The lake: A shallow, seasonal soda lake with flamingos and other water birds.", "Baobabs and bush: Open woodland to explore on foot with a local guide.", "Starry nights: Remote camps with very dark skies."],
+    "activities": ["Early-morning bush walk with Hadzabe hunters", "Visit to a Datoga village and blacksmith", "Walking along the shore and watching birds", "Cultural sunset sundowner at camp"],
+    "getting_there": "Lake Eyasi is about one and a half hours on dirt road from Karatu, which is itself roughly two and a half to three hours from Arusha, so most guests spend a night in the area.",
+    "tips": ["Visits take place at sunrise, so expect an early start.", "Ask your guide before taking photographs and follow their advice.", "Bring closed shoes and long trousers for bush walking.", "Fees go directly to the communities you visit."]
+  },
+  "lengai-natron": {
+    "highlights": ["Ol Doinyo Lengai: The Maasai \"Mountain of God\" is an active volcano that erupts unusual carbonatite lava.", "Lake Natron: A hot, alkaline lake in the Rift Valley that is the main breeding ground for lesser flamingos in East Africa.", "Engare Sero: A shady gorge with a waterfall and pools, reached by a short walk.", "Wild landscapes: Cracked salt flats, red rocks and almost no other visitors.", "Maasai culture: The area is home to Maasai communities who herd livestock across the plains."],
+    "activities": ["Night climb of Ol Doinyo Lengai (strenuous)", "Walk to the Engare Sero waterfall and gorge", "Flamingo watching along the lake shore", "Visit to a Maasai village"],
+    "getting_there": "Lake Natron is a long day by 4x4 from Arusha, roughly four to five hours depending on the route and conditions, on mostly unpaved roads.",
+    "tips": ["The Lengai climb starts around midnight and is steep and loose, so good fitness is needed.", "It is hot and dry, so carry plenty of water and sun protection.", "Flamingo numbers vary through the year.", "Allow at least two nights to make the trip worthwhile."]
+  },
+  "mikumi": {
+    "highlights": ["Mkata floodplain: A wide, open plain where giraffes, zebra, buffalo and elephants are easy to spot.", "Hippo pool: A pool where you can get out to watch hippos from a safe viewing area.", "Close to Dar es Salaam: The easiest national park to reach from the coast.", "Lions and elephants: Resident prides and elephant herds, often seen from the main road through the park.", "Birdlife: More than 400 species have been recorded."],
+    "activities": ["Game drives across the floodplain", "Visit to the hippo pool", "Bird watching", "Day visit to the nearby Udzungwa Mountains for forest walks"],
+    "getting_there": "Mikumi is about four hours by road from Dar es Salaam, or you can fly to a nearby airstrip, and it is a natural first stop on the southern circuit.",
+    "tips": ["The main highway crosses the park, so watch for slow speed limits and wildlife on the road.", "June to October is the driest and best time.", "Combine it with Ruaha or Nyerere for a longer southern trip.", "Bring insect repellent for evenings."]
+  },
+  "nyerere": {
+    "highlights": ["Rufiji River: Boat safaris glide past hippos, crocodiles and drinking elephants.", "Walking safaris: Guided walks with an armed ranger let you see the smaller details of the bush.", "African wild dogs: The park has good chances of seeing this endangered predator.", "Lakes and channels: Water views make the scenery very different from the northern parks.", "Few visitors: Large wilderness with very few other vehicles."],
+    "activities": ["Boat safari on the Rufiji River", "Guided walking safari", "Game drives", "Fly-camping nights (on request)"],
+    "getting_there": "The simplest way is a short scheduled or charter flight from Dar es Salaam of about 45 minutes. Drives from Dar es Salaam take six to seven hours.",
+    "tips": ["June to October is the best season for game viewing.", "Wear neutral colours as tsetse flies can be present.", "Pack light for the small bush planes.", "Roads may be difficult during the rainy season."]
+  },
+  "ruaha": {
+    "highlights": ["Great Ruaha River: The lifeline of the park and the best place to see wildlife in the dry season.", "Big lion prides: Ruaha is known for large groups of lions and many other predators.", "Elephants and baobabs: Large herds roam beneath old baobab trees.", "Rare antelope: Greater and lesser kudu, sable and roan antelope are seen here more often than in the north.", "Peaceful wilderness: The park is large and remote and few other visitors are around."],
+    "activities": ["Game drives", "Walking safaris with a ranger", "Fly camping in the bush (on request)", "Bird watching along the river"],
+    "getting_there": "Most guests fly from Dar es Salaam or Arusha, which takes roughly an hour and a half to two hours. You can also drive from Iringa in around three hours.",
+    "tips": ["Visit from June to October when animals gather at the river.", "Choose a camp close to the river for the best game viewing.", "Bring lightweight, neutral clothing.", "Give yourself three nights to make the journey worthwhile."]
+  },
+  "zanzibar": {
+    "highlights": ["Stone Town: A historic UNESCO World Heritage old town of narrow lanes, carved doors and Swahili markets.", "Spice farms: Tours that let you taste and smell cloves, vanilla, cinnamon and nutmeg.", "White-sand beaches: From Nungwi and Kendwa in the north to Paje and Jambiani on the east coast.", "Jozani Forest: Home to the rare red colobus monkey.", "Dhow trips and snorkelling: Clear water around Mnemba Atoll and Prison Island."],
+    "activities": ["Walking tour of Stone Town", "Spice farm visit", "Snorkelling or diving", "Sunset dhow cruise", "Visit to Jozani Forest to see red colobus monkeys"],
+    "getting_there": "Fly from Arusha, Kilimanjaro or Dar es Salaam to Zanzibar, or take a ferry from Dar es Salaam, which takes about two hours.",
+    "tips": ["Dress modestly in Stone Town and away from the beach.", "East-coast beaches change dramatically with the tides.", "The long rains in April and May are the quietest period.", "Add three or four nights after a safari to relax."]
+  },
+  "kilimanjaro": {
+    "highlights": ["Uhuru Peak: At 5,895 metres, the roof of Africa and the highest free-standing mountain in the world.", "Five climate zones: Rainforest, moorland, alpine desert and glaciers in a single trek.", "Six routes: Marangu, Machame, Lemosho, Rongai, Umbwe and the Northern Circuit.", "Sunrise at the summit: Most climbers reach the top at dawn after a midnight start.", "Support team: Guides, cooks and porters carry equipment and prepare meals."],
+    "activities": ["Multi-day summit climb", "Day hike to Marangu Gate or the Materuni waterfalls", "Coffee farm tour around Moshi", "Safari or Zanzibar extension after the climb"],
+    "getting_there": "Kilimanjaro International Airport is about an hour from Moshi and the main park gates. Our team collects you from the airport and takes you to your hotel.",
+    "tips": ["Longer routes give your body more time to adjust and a better chance of reaching the summit.", "Pack warm layers, a good sleeping bag and well-worn boots.", "Walk slowly and drink plenty of water.", "Train with long hikes and stairs before you come."]
+  },
+  "mount-meru": {
+    "highlights": ["Africa's fifth highest peak: Meru rises to 4,566 metres above Arusha National Park.", "Wildlife on the trail: Giraffes, buffalo and monkeys are often seen on the lower slopes with an armed ranger.", "Dramatic ridge: The crater rim walk to Socialist Peak has spectacular views.", "Good training climb: A popular acclimatisation hike before Kilimanjaro.", "Quiet trails: Fewer climbers than on Kilimanjaro."],
+    "activities": ["Three- to four-day Momella route trek", "Wildlife walk through Arusha National Park", "Sunrise summit push", "Acclimatisation hike before Kilimanjaro"],
+    "getting_there": "Momella Gate is around 45 minutes from Arusha by road, so you can start trekking on the same day you arrive.",
+    "tips": ["An armed ranger accompanies every group.", "The dry months from June to February are best.", "Bring warm clothes and rain protection.", "Combine it with a safari for a balanced trip."]
+  },
+  "usambara": {
+    "highlights": ["Cool highland air: Pleasant temperatures and green hills a world away from the heat of the coast.", "Village walks: Day hikes between farms, forests and small communities.", "Viewpoints: Dramatic overlooks across the plains, such as Irente.", "Birds and chameleons: The mountains are part of the Eastern Arc, home to many species found nowhere else.", "Quiet pace: Few tourists, with local guides who know the trails."],
+    "activities": ["Guided village and forest hikes", "Viewpoint walks", "Bird watching", "Visits to local markets and farms"],
+    "getting_there": "Lushoto, the main base in the Western Usambaras, is around five to six hours by road from Arusha or Dar es Salaam.",
+    "tips": ["Bring a warm layer and rain jacket as it can be cool and misty.", "Hire a local guide for trails.", "June to October is the driest period.", "Combine it with a safari for contrast."]
+  },
+  "arusha": {
+    "highlights": ["Mount Meru views: On clear mornings the mountain towers over the city.", "Cultural Heritage Centre: A large gallery and shop with carvings, paintings and jewellery.", "Markets: Busy local markets for spices, fabric and everyday life.", "Coffee farms: Easy half-day visits to estates on the slopes of Mount Meru.", "Gateway to the north: The starting point for nearly every northern safari."],
+    "activities": ["City and market walk", "Coffee farm tour", "Visit to the Cultural Heritage Centre", "Day trip to Arusha National Park"],
+    "getting_there": "Kilimanjaro International Airport is roughly an hour from Arusha by road, and Arusha Airport has scheduled flights to the Serengeti, Zanzibar and other airstrips.",
+    "tips": ["Spend a night before or after your safari to rest.", "Carry small notes in Tanzanian shillings for markets.", "Use hotel-arranged taxis at night.", "Ask us about airport transfers and city stays."]
+  },
+  "arusha-national-park": {
+    "highlights": ["Momella Lakes: A chain of shallow lakes with flamingos and other water birds.", "Ngurdoto Crater: A forested crater with a small wildlife-filled floor.", "Colobus monkeys: Black-and-white colobus monkeys swing through the forest canopy.", "Giraffes and buffalo: Easy to see on the open grassland.", "Mount Meru: Dramatic views of the volcano from the park."],
+    "activities": ["Guided walking safari with a ranger", "Canoe safari on the Momella lakes", "Game drive", "Hike to the Tululusia waterfall"],
+    "getting_there": "The park gate is about 45 minutes from Arusha, so a half-day or full-day visit works easily on arrival or departure day.",
+    "tips": ["Bring a light jacket as the park sits high on the slopes of Mount Meru.", "Early mornings give the clearest mountain views.", "Walking safaris must be done with a ranger.", "Combine with a visit to the coffee farms nearby."]
+  }
+}

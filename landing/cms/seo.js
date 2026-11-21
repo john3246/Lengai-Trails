@@ -1,7 +1,9 @@
 // Server-side SEO + AI-crawler support: per-page <head> (title, description, canonical, Open Graph, JSON-LD),
 // crawlable content for pages that are otherwise filled in by JavaScript, plus robots.txt, sitemap.xml and llms.txt.
 // Set SITE_URL (for example https://lengaitrails.com) in production so canonical URLs are always correct.
-const { all, get, P } = require('./db');
+const { all } = require('./db');
+const tourRepo = require('./tours');
+const store = require('./store');
 
 const BRAND = 'Lengai Trails Expeditions';
 const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -9,19 +11,19 @@ const clip = (s, n) => { s = String(s || '').replace(/\s+/g, ' ').trim(); return
 const arr = v => (Array.isArray(v) ? v : v ? [v] : []);
 
 const PAGES = {
-  '/': ['Tanzania Safari Tours & Packages | ' + BRAND, 'Private Tanzania safaris, Kilimanjaro climbs and Zanzibar holidays, planned by a locally owned team in Arusha. Serengeti, Ngorongoro, Tarangire and the Great Migration.'],
-  '/safaris': ['Tanzania Safari Packages: Private, Luxury & Group Trips | ' + BRAND, 'Browse private, luxury, midrange, budget and fly-in Tanzania safaris with day-by-day itineraries and prices. Great Migration, Serengeti, Ngorongoro Crater and more.'],
-  '/packages': ['All Tanzania Safari & Kilimanjaro Packages | ' + BRAND, 'Every Lengai Trails package in one place: safaris, Great Migration trips, Kilimanjaro and Mount Meru treks, with itineraries, inclusions and prices.'],
-  '/kilimanjaro': ['Kilimanjaro Climbing Tours: Routes, Prices & Itineraries | ' + BRAND, 'Climb Mount Kilimanjaro via Lemosho, Machame, Marangu, Rongai, Umbwe or the Northern Circuit with certified guides. Compare routes, days and prices.'],
-  '/group-safari': ['Join a Group Safari in Tanzania | ' + BRAND, 'Share the cost, not the experience. Fixed-departure joining safaris through the Northern Circuit with a professional guide.'],
-  '/destinations': ['Tanzania Safari Destinations: Serengeti, Ngorongoro, Tarangire & More | ' + BRAND, 'Guides to the national parks and regions we visit: Serengeti, Ngorongoro, Tarangire, Lake Manyara, Zanzibar, Kilimanjaro and the south.'],
-  '/accommodations': ['Safari Lodges & Camps in Tanzania | ' + BRAND, 'Lodges, tented camps and campsites we use across Tanzania, from budget camping to luxury Serengeti camps.'],
-  '/blogs': ['Tanzania Safari Guides & Travel Tips | ' + BRAND, 'Practical guides to planning a Tanzania safari: best time to go, the Great Migration, balloon safaris, Kilimanjaro, costs and packing.'],
-  '/reviews': ['Guest Reviews | ' + BRAND, 'What travellers say about their safaris and Kilimanjaro climbs with Lengai Trails Expeditions.'],
-  '/faq': ['Tanzania Safari FAQs | ' + BRAND, 'Answers to common questions about Tanzania safaris, Kilimanjaro climbs, payments, visas, insurance and what to pack.'],
-  '/about': ['About Us | ' + BRAND, 'Lengai Trails Expeditions is a locally owned safari and trekking operator based in Arusha, Tanzania.'],
-  '/contact': ['Contact Us | ' + BRAND, 'Talk to a Tanzania travel consultant in Arusha. Share your dates, group size and interests and get a tailored quote.'],
-  '/book': ['Book a Safari | ' + BRAND, 'Request a booking for a Tanzania safari or Kilimanjaro climb. We confirm availability and price by email.']
+  '/': ['Lengai Trails Expeditions | Safaris, Kilimanjaro Climbs & Zanzibar Stays from Arusha', 'Tailor-made journeys to the Serengeti, Kilimanjaro and Zanzibar, designed and guided by a Tanzanian team that lives in Arusha.'],
+  '/safaris': ['Safari Trips Across Northern Tanzania | ' + BRAND, 'Browse our private, shared, luxury and fly-in safaris, each with a day-by-day plan and a per-person price. Migration, Serengeti, Ngorongoro and more.'],
+  '/packages': ['Every Trip We Run: Safaris, Climbs and Treks | ' + BRAND, 'The full list of our safaris, migration trips, Kilimanjaro and Mount Meru climbs, with itineraries, what is included and prices.'],
+  '/kilimanjaro': ['Climb Kilimanjaro: Six Routes Compared | ' + BRAND, 'Compare the Lemosho, Machame, Marangu, Rongai, Umbwe and Northern Circuit routes by length, difficulty and price, led by trained mountain guides.'],
+  '/group-safari': ['Shared Safaris on Fixed Dates | ' + BRAND, 'Travel with a small group and split the cost of the vehicle and guide. Set departures from Arusha through the Northern Circuit.'],
+  '/destinations': ['Where We Go in Tanzania | ' + BRAND, 'The parks and regions on our routes: Serengeti, Ngorongoro, Tarangire, Lake Manyara, Zanzibar, Kilimanjaro and the south.'],
+  '/accommodations': ['Where You Will Stay: Lodges and Camps | ' + BRAND, 'The lodges, tented camps and campsites we book across Tanzania, from simple camping to high-end Serengeti camps.'],
+  '/blogs': ['Travel Guides for Tanzania | ' + BRAND, 'Helpful reading before you book: when to go, how the migration works, balloon flights, Kilimanjaro, costs and what to pack.'],
+  '/reviews': ['What Our Guests Say | ' + BRAND, 'Reviews from travellers who went on safari or climbed Kilimanjaro with Lengai Trails Expeditions.'],
+  '/faq': ['Questions Before You Travel | ' + BRAND, 'Answers on safaris, Kilimanjaro, payments, visas, insurance and packing.'],
+  '/about': ['Who We Are | ' + BRAND, 'Lengai Trails Expeditions is a Tanzanian safari and trekking company with its office in Arusha.'],
+  '/contact': ['Talk to Our Arusha Team | ' + BRAND, 'Send your dates, party size and wish list and a travel consultant will reply with a proposed route and price.'],
+  '/book': ['Request a Booking | ' + BRAND, 'Ask us to hold a Tanzania safari or Kilimanjaro climb. We confirm availability and price by email.']
 };
 const NOINDEX = new Set(['/book']);
 
@@ -54,7 +56,7 @@ async function pageData(p, base) {
   let m;
   const out = { title: null, desc: null, ld: [], image: null, type: 'website', body: {} };
   if ((m = p.match(/^\/packages\/([^/]+)$/))) {
-    const t = await get("SELECT * FROM tours WHERE slug = ? AND status = 'published'", decodeURIComponent(m[1]));
+    const t = await tourRepo.one(decodeURIComponent(m[1]), { drafts: false });
     if (!t) return { notFound: true };
     const days = t.days ? t.days + ' day' + (t.days > 1 ? 's' : '') : '';
     const ov = arr(t.overview).join(' ');
@@ -78,10 +80,9 @@ async function pageData(p, base) {
   }
   if ((m = p.match(/^\/(destinations|accommodations|blogs)\/([^/]+)$/))) {
     const kind = m[1] === 'blogs' ? 'blog' : m[1];
-    const r = await get("SELECT * FROM records WHERE kind = ? AND status = 'published' AND data->>'slug' = ?", kind, decodeURIComponent(m[2]));
-    if (!r) return { notFound: true };
-    const d = P(r.data, {});
-    const name = d.name || d.title || r.title;
+    const d = await store.publicOne(kind, decodeURIComponent(m[2]));
+    if (!d) return { notFound: true };
+    const name = d.name || d.title;
     const text = d.description || d.body || d.excerpt || d.summary || '';
     const url = base + p;
     out.title = clip(name, 55) + (m[1] === 'blogs' ? ' | Tanzania Safari Guide | ' : m[1] === 'destinations' ? ' Safari Guide | ' : ' | ') + BRAND;
@@ -101,18 +102,18 @@ async function pageData(p, base) {
   out.title = meta[0]; out.desc = meta[1];
   if (p === '/') out.ld.push(org(base), { '@context': 'https://schema.org', '@type': 'WebSite', '@id': base + '/#site', url: base + '/', name: BRAND, publisher: { '@id': base + '/#org' }, inLanguage: 'en' });
   else if (p !== '/book') out.ld.push(crumbs(base, [['Home', '/'], [meta[0].split(' | ')[0], p]]));
-  const tours = cat => all(`SELECT slug, title, days, price_from FROM tours WHERE status = 'published' ${cat ? 'AND category = ?' : ''} ORDER BY sort, id`, ...(cat ? [cat] : []));
+  const tours = cat => all(`SELECT slug, title, days, price_from FROM cms_tours WHERE status = 'published' ${cat ? 'AND category = ?' : ''} ORDER BY sort, id`, ...(cat ? [cat] : []));
   const tl = rows => linkList(rows, t => '/packages/' + t.slug, t => t.title, t => (t.price_from ? '(from USD ' + t.price_from + ')' : ''));
   if (p === '/safaris') { const r = await tours('safari'); out.body.sflist = tl(r); out.ld.push(itemList(base, r)); }
   if (p === '/packages') { const r = await tours(); out.body.pkgrid = tl(r); out.ld.push(itemList(base, r)); }
   if (p === '/kilimanjaro') out.body.kilist = tl(await tours('trekking'));
   if (p === '/destinations' || p === '/accommodations' || p === '/blogs') {
     const kind = p === '/blogs' ? 'blog' : p.slice(1);
-    const rows = (await all("SELECT title, data FROM records WHERE kind = ? AND status = 'published' ORDER BY id DESC LIMIT 200", kind)).map(r => ({ ...P(r.data, {}), title: r.title }));
+    const rows = await store.publicList(kind, { limit: 200 });
     out.body[{ '/destinations': 'destlist', '/accommodations': 'acclist', '/blogs': 'bloglist' }[p]] = linkList(rows.filter(x => x.slug), x => p + '/' + x.slug, x => x.name || x.title);
   }
   if (p === '/faq') {
-    const rows = (await all("SELECT data FROM records WHERE kind = 'faqs' AND status = 'published' ORDER BY id DESC LIMIT 200")).map(r => P(r.data, {})).filter(f => f.question && f.answer);
+    const rows = (await store.publicList('faqs', { limit: 200 })).filter(f => f.question && f.answer);
     if (rows.length) {
       out.ld.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: rows.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: clip(f.answer, 1000) } })) });
       out.body.faqlist = rows.map(f => `<details class="iday"><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join('');
@@ -160,15 +161,15 @@ async function sitemapXml(req) {
   const urls = [];
   const add = (loc, lastmod, pri) => urls.push(`<url><loc>${esc(base + loc)}</loc>${lastmod ? '<lastmod>' + new Date(lastmod).toISOString().slice(0, 10) + '</lastmod>' : ''}${pri ? '<priority>' + pri + '</priority>' : ''}</url>`);
   for (const p of Object.keys(PAGES)) if (!NOINDEX.has(p)) add(p === '/' ? '/' : p, null, p === '/' ? '1.0' : '0.8');
-  for (const t of await all("SELECT slug, updated_at FROM tours WHERE status = 'published' ORDER BY sort, id")) add('/packages/' + t.slug, t.updated_at, '0.9');
+  for (const t of await all("SELECT slug, updated_at FROM cms_tours WHERE status = 'published' ORDER BY sort, id")) add('/packages/' + t.slug, t.updated_at, '0.9');
   for (const [kind, path] of [['destinations', 'destinations'], ['accommodations', 'accommodations'], ['blog', 'blogs']])
-    for (const r of await all("SELECT updated_at, data->>'slug' AS slug FROM records WHERE kind = ? AND status = 'published'", kind)) if (r.slug) add('/' + path + '/' + r.slug, r.updated_at, '0.7');
+    for (const r of await all(`SELECT updated_at, slug FROM ${store.resource(kind).table} WHERE ${store.publicWhere(store.resource(kind))}`)) if (r.slug) add('/' + path + '/' + r.slug, r.updated_at, '0.7');
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls.join('\n') + '\n</urlset>\n';
 }
 
 async function llmsTxt(req) {
   const base = siteUrl(req);
-  const tours = await all("SELECT slug, title, days, category, price_from FROM tours WHERE status = 'published' ORDER BY sort, id");
+  const tours = await all("SELECT slug, title, days, category, price_from FROM cms_tours WHERE status = 'published' ORDER BY sort, id");
   const line = t => `- [${t.title}](${base}/packages/${t.slug}): ${t.days} day${t.days > 1 ? 's' : ''}${t.price_from ? ', from USD ' + t.price_from + ' per person' : ''}`;
   return [`# ${BRAND}`, '',
     '> Locally owned Tanzania safari and Kilimanjaro trekking operator based in Arusha. Private and group safaris, Great Migration trips, Serengeti, Ngorongoro Crater, Tarangire, Zanzibar extensions and Kilimanjaro climbs. Prices are in USD per person.', '',

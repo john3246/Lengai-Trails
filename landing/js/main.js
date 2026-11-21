@@ -24,6 +24,18 @@ const abs = u => (!u || /^(https?:|\/|data:)/.test(u)) ? u : '/' + u;
 const slugOf = () => { const s = location.pathname.split('/').filter(Boolean); return s.length > 1 ? decodeURIComponent(s[s.length - 1]) : (new URLSearchParams(location.search).get('slug') || ''); };
 const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const money = n => 'USD ' + Number(n).toLocaleString('en-US');
+// Package card shared by every list on the site (same design as the destination cards)
+const TI = { clock: 'M12 7v5l3 2M12 21a9 9 0 100-18 9 9 0 000 18z', pin: 'M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12zM12 11a2 2 0 100-4 2 2 0 000 4', tag: 'M3 12V3h9l9 9-9 9zM7.5 7.5h.01' };
+const tIco = n => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + TI[n] + '"/></svg>';
+const STYLES = [['luxury', 'Luxury'], ['honeymoon', 'Honeymoon'], ['family', 'Family'], ['migration', 'Migration'], ['midrange', 'Mid-range'], ['budget', 'Budget'], ['fly-in', 'Fly-in'], ['zanzibar', 'With Zanzibar'], ['cultural', 'Cultural'], ['camping', 'Camping'], ['day-trip', 'Day trip']];
+const CATS_L = { safari: 'Private safari', group: 'Group safari', trekking: 'Trekking' };
+window.tripCardHtml = t => {
+  const chip = (STYLES.find(([k]) => (t.tags || []).includes(k)) || [])[1] || t.subcategory || CATS_L[t.category] || 'Safari';
+  const href = '/packages/' + encodeURIComponent(t.slug);
+  const dur = t.days ? t.days + (t.days > 1 ? ' Days / ' + (t.days - 1) + ' Nights' : ' Day') : '';
+  return '<article class="dcard dcard--pkg"><a class="dcard__img" href="' + href + '"><img src="' + esc(abs(t.image)) + '" alt="' + esc(t.title) + '" loading="lazy"></a><div class="dcard__b"><div class="dcard__h"><h3><a href="' + href + '">' + esc(t.title) + '</a></h3><span class="dcard__chip">' + esc(chip) + '</span></div>' + (t.summary ? '<p class="dcard__t">' + esc(t.summary) + '</p>' : '') + '<ul class="dcard__facts">' + (dur ? '<li>' + tIco('clock') + '<span>Duration: <b>' + dur + '</b></span></li>' : '') + (t.route ? '<li>' + tIco('pin') + '<span>Route: ' + esc(t.route) + '</span></li>' : '') + '<li>' + tIco('tag') + '<span>' + (t.price_from ? 'From: <b>' + money(t.price_from) + '</b> per person' : 'Price on request') + '</span></li></ul><a class="dcard__link" href="' + href + '">View itinerary &amp; price &rarr;</a></div></article>';
+};
+
 
 // ---- visitor tracking (cookie-free, feeds CMS "Website traffic") ----
 try { fetch('/api/track', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: location.pathname + location.search, title: document.title, ref: document.referrer }), keepalive: true }).catch(() => {}); } catch (e) {}
@@ -54,7 +66,7 @@ if (pkgrid) {
     document.querySelectorAll('#pkchips .chip').forEach(c => c.classList.toggle('is-on', c.dataset.f === f));
     const list = f === 'all' ? all : all.filter(t => t.category === f);
     document.getElementById('pkcount').textContent = list.length + ' packages';
-    pkgrid.innerHTML = list.map(t => `<article class="trip"><a class="trip__img" href="/packages/${encodeURIComponent(t.slug)}"><img src="${esc(abs(t.image))}" alt="" loading="lazy"></a><div class="trip__b"><p class="meta">${esc(t.subcategory || CAT[t.category] || '')}${t.days ? ' · ' + t.days + (t.days === 1 ? ' Day' : ' Days') : ''}</p>${t.price_from ? `<p class="from">From <strong>${money(t.price_from)}</strong> / person</p>` : '<p class="from">Price on request</p>'}<h3>${esc(t.title)}</h3>${t.route ? `<p class="route">${esc(t.route)}</p>` : ''}<a class="link" href="/packages/${encodeURIComponent(t.slug)}">View itinerary &amp; price &rarr;</a></div></article>`).join('') || '<p>No packages in this category yet.</p>';
+    pkgrid.innerHTML = list.map(window.tripCardHtml).join('') || '<p>No packages in this category yet.</p>';
   };
   fetch('/api/tours').then(r => r.json()).then(rows => {
     all = rows;
@@ -69,7 +81,7 @@ if (pkd) {
   const slug = slugOf();
   const getJ = u => fetch(u).then(r => r.ok ? r.json() : []).catch(() => []);
   const ACT = [[/game drive/i, 'Game drive'], [/picnic/i, 'Picnic lunch'], [/boat/i, 'Boat safari'], [/walking safari|guided walk/i, 'Walking safari'], [/balloon/i, 'Hot-air balloon'], [/hadzabe|datoga|cultural/i, 'Cultural visit'], [/canoe/i, 'Canoe safari'], [/spice/i, 'Spice farm visit'], [/stone town/i, 'Stone Town tour'], [/snorkel/i, 'Snorkelling'], [/flight|fly /i, 'Flight'], [/trek|hik|climb|summit/i, 'Trekking'], [/waterfall/i, 'Waterfall walk']];
-  Promise.all([fetch('/api/tours/' + encodeURIComponent(slug)).then(r => { if (!r.ok) throw 0; return r.json(); }), getJ('/api/content/destinations'), getJ('/api/content/accommodations')]).then(([t, dests, accs]) => {
+  Promise.all([(window.__PREVIEW ? Promise.resolve(window.__PREVIEW) : fetch('/api/tours/' + encodeURIComponent(slug)).then(r => { if (!r.ok) throw 0; return r.json(); })), getJ('/api/content/destinations'), getJ('/api/content/accommodations')]).then(([t, dests, accs]) => {
     document.title = t.title + ' | Lengai Trails Expeditions';
     const h1 = document.querySelector('.phero h1'); if (h1) h1.textContent = t.title;
     const sub = document.querySelector('.phero__in > p:last-child'); if (sub) sub.textContent = [t.days ? t.days + (t.days === 1 ? ' day' : ' days') : '', t.subcategory, t.type].filter(Boolean).join(' · ');
@@ -135,3 +147,92 @@ document.addEventListener('click', e => {
   const a = card && card.querySelector('a[href]');
   if (a) location.href = a.getAttribute('href');
 });
+
+// ---- home hero: rotate the background pictures, thumbnails pick one ----
+(() => {
+  const slides = [...document.querySelectorAll('.hero__slide')], thumbs = [...document.querySelectorAll('.hero__thumbs button')];
+  if (slides.length < 2) return;
+  let cur = 0, timer;
+  const show = i => { cur = (i + slides.length) % slides.length; slides.forEach((s, k) => s.classList.toggle('is-on', k === cur)); thumbs.forEach((t, k) => t.classList.toggle('is-on', k === cur)); slides[cur].loading = 'eager'; };
+  const start = () => { clearInterval(timer); if (!matchMedia('(prefers-reduced-motion: reduce)').matches) timer = setInterval(() => show(cur + 1), 6500); };
+  thumbs.forEach(t => t.addEventListener('click', () => { show(+t.dataset.i); start(); }));
+  start();
+})();
+
+// ---- mega dropdowns: intro, links, popular trips (from the database) and a featured card ----
+(() => {
+  const items = [...document.querySelectorAll('.nav__item')]; if (!items.length) return;
+  const JSONget = u => fetch(u).then(r => r.ok ? r.json() : []).catch(() => []);
+  Promise.all([JSONget('/api/tours'), JSONget('/api/content/destinations')]).then(([tours, dests]) => {
+    if (!tours.length) return;
+    const by = c => tours.filter(t => t.category === c);
+    const rank = l => l.slice().sort((a, b) => (b.featured || 0) - (a.featured || 0));
+    const meta = t => (t.days ? t.days + (t.days > 1 ? ' Days / ' + (t.days - 1) + ' Nights' : ' Day') : '') + (t.price_from ? ' · From ' + money(t.price_from) : '');
+    const CFG = {
+      '/destinations': { t: 'Where we go', d: 'From the Serengeti and Ngorongoro to Kilimanjaro and Zanzibar, explore the places we know best.', all: 'Browse all ' + dests.length + ' destinations', col: 'Regions', pop: 'Popular destinations', dests: true },
+      '/safaris': { t: 'Tanzania safaris', d: 'Private, tailor-made and small-group safaris across the Northern Circuit and beyond.', all: 'Browse all ' + by('safari').length + ' safaris', col: 'Safari styles', pop: 'Popular safaris', list: rank(by('safari')) },
+      '/packages': { t: 'All packages', d: 'Safaris, group trips and climbs, each with a day-by-day itinerary and a clear price.', all: 'Browse all ' + tours.length + ' packages', col: 'Browse by type', pop: 'Popular trips', list: rank(by('safari')).slice(0, 2).concat(rank(by('trekking')).slice(0, 1), rank(by('group')).slice(0, 1)) },
+      '/group-safari': { t: 'Group safaris', d: 'Share the vehicle and the cost on fixed departures with a professional guide.', all: 'See all group departures', col: 'Group safaris', pop: 'Popular group trips', list: rank(by('group')) },
+      '/kilimanjaro': { t: 'Climb Kilimanjaro', d: 'Fully supported climbs on six routes with experienced mountain guides.', all: 'Browse all ' + by('trekking').length + ' climbs & treks', col: 'Kilimanjaro', pop: 'Popular climbs', list: rank(by('trekking')) }
+    };
+    items.forEach(it => {
+      const top = it.querySelector(':scope > a'), sub = it.querySelector('.submenu'); if (!top || !sub) return;
+      const key = (top.getAttribute('href') || '').split(/[?#]/)[0], c = CFG[key]; if (!c) return;
+      const links = [...sub.querySelectorAll('a')].map(a => '<a href="' + esc(a.getAttribute('href')) + '"><i></i>' + esc(a.textContent) + '</a>').join('');
+      let pop = '', feat = '';
+      if (c.dests) {
+        const PRI = ['serengeti', 'ngorongoro-crater', 'tarangire', 'lake-manyara', 'zanzibar', 'kilimanjaro', 'ruaha', 'nyerere']; const ds = dests.filter(d => d.slug).sort((x, y) => (PRI.indexOf(x.slug) + 99) % 99 - (PRI.indexOf(y.slug) + 99) % 99).slice(0, 6);
+        pop = ds.map(d => '<a class="mega__trip" href="/destinations/' + encodeURIComponent(d.slug) + '"><b>' + esc(d.name) + '</b><small>' + esc(d.region) + '</small></a>').join('');
+        const f = dests.find(d => d.slug === 'serengeti') || ds[0];
+        if (f) feat = '<a class="mega__feat" href="/destinations/' + encodeURIComponent(f.slug) + '" style="background-image:url(' + esc(abs(f.image)) + ')"><span><em>Featured destination</em><b>' + esc(f.name) + '</b><small>' + esc(f.region) + '</small></span></a>';
+      } else {
+        const l = (c.list || []).slice(0, 5);
+        pop = l.map(t => '<a class="mega__trip" href="/packages/' + encodeURIComponent(t.slug) + '"><b>' + esc(t.title) + '</b><small>' + esc(meta(t)) + '</small></a>').join('');
+        const f = (c.list || []).find(t => (t.tags || []).includes('luxury')) || (c.list || [])[0];
+        if (f) feat = '<a class="mega__feat" href="/packages/' + encodeURIComponent(f.slug) + '" style="background-image:url(' + esc(abs(f.image)) + ')"><span><em>Featured journey</em><b>' + esc(f.title) + '</b><small>' + esc(f.days ? f.days + (f.days > 1 ? ' Days' : ' Day') : '') + '</small></span></a>';
+      }
+      sub.classList.add('is-mega');
+      sub.innerHTML = '<div class="mega"><div class="mega__col mega__col--links"><h5>' + esc(c.col) + '</h5><a class="mega__all" href="' + esc(key) + '">' + esc(c.all) + ' &rarr;</a>' + links + '</div><div class="mega__col mega__col--pop"><h5>' + esc(c.pop) + '</h5>' + pop + '</div>' + feat + '</div>';
+    });
+  });
+})();
+
+// ---- homepage sections are filled from the database (the static markup is only a fallback) ----
+(() => {
+  if (!document.getElementById('featured') || !document.getElementById('offers')) return;
+  const ICP = { pin: 'M12 21s7-6 7-12a7 7 0 10-14 0c0 6 7 12 7 12zM12 11a2 2 0 100-4 2 2 0 000 4', tag: 'M3 12V3h9l9 9-9 9zM7.5 7.5h.01', cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4', user: 'M12 12a4 4 0 100-8 4 4 0 000 8zM4 21c0-4 3-6 8-6s8 2 8 6' };
+  const ico = n => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + ICP[n] + '"/></svg>';
+  fetch('/api/home').then(r => (r.ok ? r.json() : null)).then(h => {
+    if (!h) return;
+    const fill = (sel, html) => { const el = document.querySelector(sel); if (el && html) el.innerHTML = html; };
+    if (h.featured && h.featured.length && window.tripCardHtml) fill('#featured .grid', h.featured.slice(0, 4).map(window.tripCardHtml).join(''));
+    if (h.kili && h.kili.length && window.tripCardHtml) fill('#kilimanjaro .grid', h.kili.map(window.tripCardHtml).join(''));
+    if (h.offers && h.offers.length) fill('#offers .grid', h.offers.map(o => {
+      const href = '/packages/' + encodeURIComponent(o.slug), n = v => Number(v).toLocaleString('en-US');
+      return '<article class="dcard dcard--pkg"><a class="dcard__img" href="' + href + '"><img src="' + esc(abs(o.image)) + '" alt="' + esc(o.title) + '" loading="lazy">' + (o.percent ? '<span class="tag">' + o.percent + '% off</span>' : '') + '</a><div class="dcard__b"><div class="dcard__h"><h3><a href="' + href + '">' + esc(o.title) + '</a></h3>' + (o.label ? '<span class="dcard__chip">' + esc(o.label) + '</span>' : '') + '</div>' + (o.summary ? '<p class="dcard__t">' + esc(o.summary) + '</p>' : '') + '<ul class="dcard__facts">' + (o.route ? '<li>' + ico('pin') + '<span>Route: ' + esc(o.route) + '</span></li>' : '') + (o.saving ? '<li>' + ico('tag') + '<span>Previous price: <s>USD ' + n(o.previous) + '</s> · Save ' + o.percent + '% · USD ' + n(o.saving) + '</span></li>' : '') + '<li>' + ico('tag') + '<span>Offer price: <b>USD ' + n(o.price) + '</b> per person</span></li>' + (o.child_note ? '<li>' + ico('user') + '<span>' + esc(o.child_note) + '</span></li>' : '') + '</ul><a class="dcard__link" href="' + href + '">View offer &rarr;</a></div></article>';
+    }).join(''));
+    if (h.guides && h.guides.length) fill('#guides .grid', h.guides.map(p => {
+      const href = '/blogs/' + encodeURIComponent(p.slug);
+      return '<article class="dcard dcard--pkg"><a class="dcard__img" href="' + href + '"><img src="' + esc(abs(p.image || '/assets/img/serengeti-04.webp')) + '" alt="' + esc(p.title) + '" loading="lazy"></a><div class="dcard__b"><div class="dcard__h"><h3><a href="' + href + '">' + esc(p.title) + '</a></h3><span class="dcard__chip">Safari guide</span></div>' + (p.excerpt ? '<p class="dcard__t">' + esc(p.excerpt) + '</p>' : '') + '<ul class="dcard__facts">' + (p.published_at ? '<li>' + ico('cal') + '<span>Published: <b>' + esc(p.published_at) + '</b></span></li>' : '') + (p.author ? '<li>' + ico('user') + '<span>By ' + esc(p.author) + '</span></li>' : '') + '</ul><a class="dcard__link" href="' + href + '">Read guide &rarr;</a></div></article>';
+    }).join(''));
+  }).catch(() => {});
+})();
+
+// ---- home planner: next 12 months in the month picker ----
+(() => {
+  const sel = document.getElementById('plan-month'); if (!sel) return;
+  const d = new Date(); d.setDate(1);
+  for (let i = 0; i < 12; i++) { sel.add(new Option(d.toLocaleString('en', { month: 'long', year: 'numeric' }))); d.setMonth(d.getMonth() + 1); }
+  sel.selectedIndex = 1;
+})();
+
+// ---- contact: prefill from the home planner (?interest=&month=&travellers=) ----
+(() => {
+  const f = document.getElementById('quoteForm'); if (!f) return;
+  const q = new URLSearchParams(location.search); if (![...q.keys()].length) return;
+  const map = { Safari: 'Safari', Kilimanjaro: 'Kilimanjaro climb', Zanzibar: 'Zanzibar holiday' };
+  const sel = f.elements.interest, i = q.get('interest');
+  if (sel && map[i]) sel.value = map[i];
+  const m = q.get('month'); if (m && f.elements.dates && m !== 'Not sure yet') f.elements.dates.value = m;
+  const t = q.get('travellers'), n = t && t.match(/\d+/); if (n && f.elements.pax) f.elements.pax.value = n[0];
+})();

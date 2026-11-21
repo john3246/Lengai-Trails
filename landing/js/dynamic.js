@@ -5,8 +5,8 @@
   const esc = v => String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const money = n => 'USD ' + Number(n).toLocaleString('en-US');
   const q = new URLSearchParams(location.search);
-  const api = (u, opt) => fetch('/api/' + u, opt).then(async r => { const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Request failed'); return j; });
-  const paras = t => String(t || '').split(/\n+/).filter(Boolean).map(x => `<p>${esc(x)}</p>`).join('');
+  const api = (u, opt) => (window.__PREVIEW && /^content\/(destinations|accommodations|blog)\/[^/]+$/.test(u) ? Promise.resolve({ ok: true, json: () => Promise.resolve(window.__PREVIEW) }) : fetch('/api/' + u, opt)).then(async r => { const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error(j.error || 'Request failed'); return j; });
+  const paras = t => window.CmsMd ? window.CmsMd.render(t) : String(t || '').split(/\n+/).filter(Boolean).map(x => `<p>${esc(x)}</p>`).join('');
   const setHero = (title, sub, img) => {
     document.title = title + ' | Lengai Trails Expeditions';
     const h = document.querySelector('.phero h1'); if (h) h.textContent = title;
@@ -15,7 +15,7 @@
   };
   const notFound = (el, back, label) => { el.innerHTML = `<p>We could not find that page. <a class="link" href="${back}">${label} &rarr;</a></p>`; };
   const CAT = { safari: 'Private safari', group: 'Group / joining', trekking: 'Trekking' };
-  const tripCard = t => `<article class="trip"><a class="trip__img" href="/packages/${encodeURIComponent(t.slug)}"><img src="${esc(abs(t.image))}" alt="" loading="lazy"></a><div class="trip__b"><p class="meta">${esc(t.subcategory || CAT[t.category] || '')}${t.days ? ' · ' + t.days + (t.days === 1 ? ' Day' : ' Days') : ''}</p>${t.price_from ? `<p class="from">From <strong>${money(t.price_from)}</strong> / person</p>` : '<p class="from">Price on request</p>'}<h3>${esc(t.title)}</h3>${t.route ? `<p class="route">${esc(t.route)}</p>` : ''}<a class="link" href="/packages/${encodeURIComponent(t.slug)}">View itinerary &amp; price &rarr;</a></div></article>`;
+  const tripCard = t => window.tripCardHtml(t);
   const fail = el => { el.innerHTML = '<p>This content could not be loaded. Please try again shortly.</p>'; };
 
   // ---- safaris (private) with filter chips ----
@@ -47,17 +47,38 @@
   }
 
   // ---- destinations ----
+  const short = t => String(t || '').replace(/\s*\([^)]*\)/g, '').trim();
+  const DI = { tag: 'M3 12V3h9l9 9-9 9zM7.5 7.5h.01', cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4', sun: 'M12 16a4 4 0 100-8 4 4 0 000 8zM12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2' };
+  const di = n => '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + DI[n] + '"/></svg>';
+  const destCard = d => { const href = '/destinations/' + encodeURIComponent(d.slug); return `<article class="dcard"><a class="dcard__img" href="${href}"><img src="${esc(abs(d.image || '/assets/img/serengeti-04-card.webp'))}" alt="${esc(d.name)}" loading="lazy"></a><div class="dcard__b"><div class="dcard__h"><h3><a href="${href}">${esc(d.name)}</a></h3><span class="dcard__chip">${esc(d.region)}</span></div><p class="dcard__t">${esc(d.summary)}</p><ul class="dcard__facts">${d.price_from ? `<li>${di('tag')}<span>Packages from: <b>${money(d.price_from)}</b></span></li>` : ''}${d.best_time ? `<li>${di('cal')}<span>Best time: ${esc(short(d.best_time))}</span></li>` : ''}${d.high_season ? `<li>${di('sun')}<span>High season: ${esc(short(d.high_season))}</span></li>` : ''}</ul><a class="dcard__link" href="${href}#packages">${d.tour_count ? esc(d.name) + ' tours (' + d.tour_count + ')' : 'Explore ' + esc(d.name)} &rarr;</a></div></article>`; };
   el = $('destlist');
   if (el) api('content/destinations').then(rows => {
     const regions = ['Northern Tanzania', 'Southern Tanzania', 'The Coast', 'Mountains'];
-    $('destlist').innerHTML = regions.filter(r => rows.some(x => x.region === r)).map(r => `<div id="${esc(r.split(' ')[0].toLowerCase().replace('the', 'coast'))}" class="sec__head" style="margin-top:30px"><div><p class="eyebrow">${esc(r)}</p><h2>${esc(r)}</h2></div></div><div class="grid g3">${rows.filter(x => x.region === r).map(d => `<a class="bcard" href="/destinations/${encodeURIComponent(d.slug)}"><img src="${esc(abs(d.image || '/assets/img/serengeti-04-card.webp'))}" alt="" loading="lazy"><div><p class="meta">${esc(d.region)}</p><h3>${esc(d.name)}</h3><p>${esc(d.summary)}</p><span class="link">Explore &rarr;</span></div></a>`).join('')}</div>`).join('');
+    $('destlist').innerHTML = regions.filter(r => rows.some(x => x.region === r)).map(r => `<div id="${esc(r.split(' ')[0].toLowerCase().replace('the', 'coast'))}" class="sec__head" style="margin-top:26px"><div><p class="eyebrow">${esc(r)}</p><h2>${esc(r)}</h2></div></div><div class="dgrid">${rows.filter(x => x.region === r).map(destCard).join('')}</div>`).join('');
   if (location.hash) { const t = document.getElementById(location.hash.slice(1)); if (t) t.scrollIntoView(); }
   }).catch(() => fail($('destlist')));
   el = $('destdetail');
   if (el) api('content/destinations/' + encodeURIComponent(slugOf())).then(async d => {
     setHero(d.name, d.summary, d.image);
-    const rel = d.keyword ? await api('tours?mention=' + encodeURIComponent(d.keyword)).catch(() => []) : [];
-    $('destdetail').innerHTML = `<div class="pkmain" style="max-width:820px"><p class="meta">${esc(d.region)}</p>${paras(d.description)}</div>${rel.length ? `<div class="sec__head" style="margin-top:34px"><div><p class="eyebrow">Packages</p><h2>Trips that include ${esc(d.name)}</h2></div></div><div class="grid g4">${rel.slice(0, 8).map(tripCard).join('')}</div>` : ''}`;
+    const kw = d.keyword || '';
+    const [rel, stays] = await Promise.all([kw ? api('tours?mention=' + encodeURIComponent(kw)).catch(() => []) : [], api('content/accommodations').catch(() => [])]);
+    const k = kw.replace(/^title:/, '').toLowerCase();
+    const near = stays.filter(a => k && ((a.location || '') + ' ' + a.name).toLowerCase().includes(k)).slice(0, 4);
+    const lines = t => String(t || '').split('\n').map(x => x.trim()).filter(Boolean);
+    const split = x => { const i = x.indexOf(':'); return i > 0 && i < 48 ? [x.slice(0, i), x.slice(i + 1).trim()] : ['', x]; };
+    const hl = lines(d.highlights), acts = lines(d.activities), tips = lines(d.tips), wl = lines(d.wildlife);
+    const facts = [['Best time to visit', d.best_time], ['High season', d.high_season], ['Weather', d.best_weather]].filter(f => f[1]);
+    const sec = (title, body) => body ? `<section class="dsec"><h2>${title}</h2>${body}</section>` : '';
+    const main = `<div class="dsec dsec--lead"><p class="meta">${esc(d.region)}</p>${paras(d.description)}</div>`
+      + sec('Highlights', hl.length ? `<div class="dcards">${hl.map((x, i) => { const [t, tx] = split(x); return `<div class="dtile"><span class="dtile__n">${i + 1}</span><div>${t ? `<h3>${esc(t)}</h3>` : ''}<p>${esc(tx)}</p></div></div>`; }).join('')}</div>` : '')
+      + sec('Things to do', acts.length ? `<ul class="dlist">${acts.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '')
+      + sec('Wildlife you may see', wl.length ? `<ul class="wl">${wl.map(x => { const [t, tx] = split(x); return `<li><b>${esc(t || tx)}</b>${t ? `<span>${esc(tx)}</span>` : ''}</li>`; }).join('')}</ul>` : '')
+      + sec('Getting there', d.getting_there ? paras(d.getting_there) : '')
+      + sec('Travel tips', tips.length ? `<ul class="dlist dlist--tips">${tips.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '')
+      + sec('Where to stay', near.length ? `<div class="dstays">${near.map(a => `<a class="dstay" href="/accommodations/${encodeURIComponent(a.slug)}">${a.image ? `<img src="${esc(abs(a.image))}" alt="" loading="lazy">` : ''}<span><b>${esc(a.name)}</b><small>${esc([a.category, a.location].filter(Boolean).join(' · '))}</small></span></a>`).join('')}</div>` : '');
+    const side = `<aside class="dside"><div class="dside__card"><h3>Quick facts</h3><dl>${facts.map(f => `<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join('')}${d.price_from ? `<div><dt>Packages from</dt><dd>${money(d.price_from)} per person</dd></div>` : ''}${d.tour_count ? `<div><dt>Packages</dt><dd>${d.tour_count} trips include ${esc(d.name)}</dd></div>` : ''}</dl><a class="btn btn--gold" href="/contact?interest=Safari&dates=">Plan a trip here</a><a class="dside__link" href="#packages">See packages &darr;</a></div></aside>`;
+    $('destdetail').innerHTML = `<div class="ddetail"><div class="ddetail__main">${main}</div>${side}</div>${rel.length ? `<div class="sec__head sec__head--center" id="packages" style="margin-top:44px"><div><p class="eyebrow">Packages</p><h2>Trips that include ${esc(d.name)}</h2></div></div><div class="grid g4">${rel.slice(0, 8).map(tripCard).join('')}</div>` : ''}`;
+
   }).catch(() => notFound($('destdetail'), '/destinations', 'All destinations'));
 
   // ---- accommodations ----
@@ -70,18 +91,18 @@
   if (el) api('content/accommodations/' + encodeURIComponent(slugOf())).then(async a => {
     setHero(a.name, [a.category, a.location].filter(Boolean).join(' · '), a.image);
     const used = await api('tours?mention=' + encodeURIComponent(a.name.replace(/ (Lodge|Hotel|Camp|Tented Camp|Campsite)$/i, ''))).catch(() => []);
-    $('accdetail').innerHTML = `<div class="pkmain" style="max-width:820px">${a.stars ? `<p class="stars">${'&#9733;'.repeat(Math.min(5, a.stars))}</p>` : ''}${paras(a.description) || '<p>Full details for this property are coming soon. Ask us and we will tell you what we know.</p>'}<p><a class="btn btn--gold btn--sm" href="/contact">Ask about this stay</a></p></div>${used.length ? `<div class="sec__head" style="margin-top:34px"><div><p class="eyebrow">Where you can stay here</p><h2>Packages that use ${esc(a.name)}</h2></div></div><div class="grid g4">${used.slice(0, 8).map(tripCard).join('')}</div>` : ''}`;
+    $('accdetail').innerHTML = `<div class="pkmain" style="max-width:820px;margin-inline:auto">${a.stars ? `<p class="stars">${'&#9733;'.repeat(Math.min(5, a.stars))}</p>` : ''}${paras(a.description) || '<p>Full details for this property are coming soon. Ask us and we will tell you what we know.</p>'}<p><a class="btn btn--gold btn--sm" href="/contact">Ask about this stay</a></p></div>${used.length ? `<div class="sec__head" style="margin-top:34px"><div><p class="eyebrow">Where you can stay here</p><h2>Packages that use ${esc(a.name)}</h2></div></div><div class="grid g4">${used.slice(0, 8).map(tripCard).join('')}</div>` : ''}`;
   }).catch(() => notFound($('accdetail'), '/accommodations', 'All accommodations'));
 
   // ---- blog ----
   el = $('bloglist');
   if (el) api('content/blog').then(rows => {
-    $('bloglist').innerHTML = rows.length ? rows.map(p => `<a class="bcard" href="/blogs/${encodeURIComponent(p.slug)}"><img src="${esc(abs(p.image || '/assets/img/serengeti-04.webp'))}" alt="" loading="lazy"><div><p class="meta">${esc(p.published_at || 'Safari guide')}</p><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p><span class="link">Read guide &rarr;</span></div></a>`).join('') : '<p>New safari guides are on the way. In the meantime, <a class="link" href="/contact">ask us anything &rarr;</a></p>';
+    $('bloglist').innerHTML = rows.length ? rows.map(p => { const href = '/blogs/' + encodeURIComponent(p.slug); return `<article class="dcard dcard--pkg"><a class="dcard__img" href="${href}"><img src="${esc(abs(p.image || '/assets/img/serengeti-04.webp'))}" alt="${esc(p.title)}" loading="lazy"></a><div class="dcard__b"><div class="dcard__h"><h3><a href="${href}">${esc(p.title)}</a></h3><span class="dcard__chip">Safari guide</span></div>${p.excerpt ? `<p class="dcard__t">${esc(p.excerpt)}</p>` : ''}<ul class="dcard__facts">${p.published_at ? `<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg><span>Published: <b>${esc(p.published_at)}</b></span></li>` : ''}${p.author ? `<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 21c0-4 3-6 8-6s8 2 8 6"/></svg><span>By ${esc(p.author)}</span></li>` : ''}</ul><a class="dcard__link" href="${href}">Read guide &rarr;</a></div></article>`; }).join('') : '<p>New safari guides are on the way. In the meantime, <a class="link" href="/contact">ask us anything &rarr;</a></p>';
   }).catch(() => fail($('bloglist')));
   el = $('postdetail');
   if (el) api('content/blog/' + encodeURIComponent(slugOf())).then(p => {
     setHero(p.title, [p.author, p.published_at].filter(Boolean).join(' · '), p.image);
-    $('postdetail').innerHTML = `<article class="pkmain" style="max-width:780px">${paras(p.body || p.excerpt)}<p style="margin-top:24px"><a class="btn btn--gold btn--sm" href="/packages">Browse packages</a> <a class="link" href="/blogs">&larr; All guides</a></p></article>`;
+    $('postdetail').innerHTML = `<article class="pkmain" style="max-width:780px;margin-inline:auto">${paras(p.body || p.excerpt)}<p style="margin-top:24px"><a class="btn btn--gold btn--sm" href="/packages">Browse packages</a> <a class="link" href="/blogs">&larr; All guides</a></p></article>`;
   }).catch(() => notFound($('postdetail'), '/blogs', 'All guides'));
 
   // ---- reviews + submit form ----

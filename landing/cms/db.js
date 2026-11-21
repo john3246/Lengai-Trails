@@ -9,6 +9,7 @@ const crypto = require('crypto');
 // bigint (COUNT, BIGINT columns) and numeric (SUM) come back as strings by default
 types.setTypeParser(20, v => parseInt(v, 10));
 types.setTypeParser(1700, v => parseFloat(v));
+types.setTypeParser(1082, v => v); // DATE columns stay plain YYYY-MM-DD strings
 
 
 const DATA = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
@@ -147,6 +148,18 @@ async function seed() {
     await run("INSERT INTO settings (key,value) VALUES ('rebrand_v1','1') ON CONFLICT (key) DO NOTHING");
   }
 
+  // Original wording for package titles, overviews and highlights (data/rewrite-v1.json), applied once.
+  if (!(await get("SELECT value FROM settings WHERE key = 'rewrite_v1'"))) {
+    const f = path.join(DATA, 'rewrite-v1.json');
+    if (fs.existsSync(f)) {
+      const rw = JSON.parse(fs.readFileSync(f, 'utf8'));
+      for (const [slug, r] of Object.entries(rw))
+        await run('UPDATE tours SET title = ?, overview = ?, highlights = ?, updated_at = now() WHERE slug = ?', r.t, J([r.o]), J(r.h), slug);
+      console.log('[cms] rewrote text for ' + Object.keys(rw).length + ' packages');
+    }
+    await run("INSERT INTO settings (key,value) VALUES ('rewrite_v1','1') ON CONFLICT (key) DO NOTHING");
+  }
+
   // Original written content for destinations, guides and FAQs (data/content-text.json), loaded once.
   if (!(await get("SELECT value FROM settings WHERE key = 'content_text_v1'"))) {
     const f = path.join(DATA, 'content-text.json');
@@ -199,6 +212,33 @@ async function seed() {
     await run("INSERT INTO settings (key,value) VALUES ('lodge_itin_v2','1') ON CONFLICT (key) DO NOTHING");
   }
 
+  // Arusha and Arusha National Park, the other two northern gateway destinations (original text, added once).
+  if (!(await get("SELECT value FROM settings WHERE key = 'dest_arusha_v1'"))) {
+    const add = [
+      { name: 'Arusha', slug: 'arusha', region: 'Northern Tanzania', keyword: 'title:Arusha', image: 'assets/img/kilimanjaro-06-card.webp', status: 'published',
+        summary: 'The lively gateway city of the northern circuit, beneath Mount Meru and about an hour from Kilimanjaro Airport.',
+        description: 'Arusha sits at the foot of Mount Meru and is where most northern Tanzania safaris begin and end. Kilimanjaro International Airport is roughly an hour away by road, so many guests arrive, rest for a night and set off the next morning.\nIt is worth giving the city a little time. The Cultural Heritage Centre and the craft markets are good for gifts, the coffee farms and waterfalls on Meru\'s lower slopes make easy half-day outings, and Arusha National Park is only a short drive away.\nThe city lies at about 1,400 metres, so days are warm and evenings can be cool. Hotels range from simple guesthouses to comfortable lodges set in gardens, and we can arrange your airport transfers and first and last nights as part of any package.',
+        best_time: 'All year; June to October is the driest', high_season: 'July to October and December to January', best_weather: 'Warm days and cool evenings, with rain mostly from March to May', wildlife: 'Colobus monkey: Nearby, in Arusha National Park\nBirdlife: Common in the gardens' },
+      { name: 'Arusha National Park', slug: 'arusha-national-park', region: 'Northern Tanzania', keyword: 'Arusha National Park', image: 'assets/img/giraffe-sunset-silhouette-28-card.webp', status: 'published',
+        summary: 'A small, varied park beside Arusha with Mount Meru, the Momella lakes, giraffes and colobus monkeys, ideal for a day trip.',
+        description: 'Arusha National Park lies about 25 kilometres from Arusha and packs a surprising amount into a small area: the forested slopes of Mount Meru, the Ngurdoto Crater, and the Momella lakes, where flamingos and other water birds gather.\nIt is one of the few northern parks where you can get out of the vehicle on a guided walking safari with an armed ranger, and it is a quiet place for photography. Giraffes, buffalo, warthogs, zebras and black-and-white colobus monkeys are the main sights. You will not find the big predators of the Serengeti here, which is part of its relaxed charm.\nBecause it is so close to the city, it works well as a day trip on arrival or departure day, or as a gentle start before Tarangire, the Serengeti and Ngorongoro.',
+        best_time: 'June to October and December to February, for the clearest views of Mount Meru', high_season: 'July to October', best_weather: 'Cooler than the lowlands, especially in the mornings', wildlife: 'Giraffe: Common\nBuffalo: Common\nColobus monkey: Common\nFlamingo: Seasonal\nWarthog: Common' }
+    ];
+    for (const d of add) if (!(await get("SELECT id FROM records WHERE kind = 'destinations' AND data->>'slug' = ?", d.slug))) await run('INSERT INTO records (kind,title,status,data) VALUES (?,?,?,?)', 'destinations', d.name, 'published', JSON.stringify(d));
+    await run("INSERT INTO settings (key,value) VALUES ('dest_arusha_v1','1') ON CONFLICT (key) DO NOTHING");
+  }
+  // Fuller destination pages: highlights, things to do, getting there and tips (original text in data/content-destdepth.json), once.
+  if (!(await get("SELECT value FROM settings WHERE key = 'dest_depth_v1'"))) {
+    const f = path.join(DATA, 'content-destdepth.json');
+    if (fs.existsSync(f)) {
+      for (const [slug, v] of Object.entries(JSON.parse(fs.readFileSync(f, 'utf8')))) {
+        const row = await get("SELECT id, data FROM records WHERE kind = 'destinations' AND data->>'slug' = ?", slug);
+        if (row) await run('UPDATE records SET data = ?, updated_at = now() WHERE id = ?', JSON.stringify({ ...P(row.data), highlights: (v.highlights || []).join('\n'), activities: (v.activities || []).join('\n'), getting_there: v.getting_there || '', tips: (v.tips || []).join('\n') }), row.id);
+      }
+      console.log('[cms] added destination highlights, activities and tips');
+    }
+    await run("INSERT INTO settings (key,value) VALUES ('dest_depth_v1','1') ON CONFLICT (key) DO NOTHING");
+  }
   const setIf = (k, v) => run('INSERT INTO settings (key,value) VALUES (?,?) ON CONFLICT (key) DO NOTHING', k, v);
   await setIf('site_name', 'Lengai Trails Expeditions'); await setIf('tagline', 'Your path to golden memories begins here');
   await setIf('contact_email', 'info@lengaitrails.com'); await setIf('contact_phone', '+255 000 000 000');
@@ -234,6 +274,7 @@ async function seed() {
     }
   }
 }
-const ready = seed();
+const ready = seed().then(() => require('./migrate').run(pool));
+async function tx(fn) { const c = await pool.connect(); try { await c.query('BEGIN'); const r = await fn({ all: async (sql, ...p) => (await c.query(conv(sql), p)).rows, get: async (sql, ...p) => (await c.query(conv(sql), p)).rows[0], run: (sql, ...p) => c.query(conv(sql), p) }); await c.query('COMMIT'); return r; } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); } }
 
-module.exports = { pool, all, get, run, insert, ready, J, P, tourOut, tourFromBody, hashPassword, verifyPassword, TOUR_JSON };
+module.exports = { tx, pool, all, get, run, insert, ready, J, P, tourOut, tourFromBody, hashPassword, verifyPassword, TOUR_JSON };

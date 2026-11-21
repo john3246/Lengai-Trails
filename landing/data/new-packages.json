@@ -1,1285 +1,1296 @@
 [
-  {
-    "slug": "4-day-luxury-tanzania-safari",
-    "title": "4 Day Luxury Tanzania Safari",
-    "category": "safari",
-    "subcategory": "Luxury",
-    "tags": [
-      "luxury",
-      "fly-out"
-    ],
-    "type": "Private",
-    "days": 4,
-    "overview": [
-      "A short, comfortable northern-circuit safari for travellers who want premium lodges and the Serengeti without a long itinerary. You game-drive Tarangire among elephants and baobabs, spend a night in the Serengeti, then fly back to Arusha."
-    ],
-    "highlights": [
-      "Tarangire elephants and baobabs",
-      "Central Serengeti predators",
-      "Scenic flight back to Arusha"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival in Arusha",
-        "body": [
-          "We meet you at Kilimanjaro or Arusha airport and take you to a luxury hotel in Arusha. In the evening your guide runs a safari briefing."
-        ],
-        "meta": {
-          "Meals": "Dinner",
-          "Accommodation": "Luxury hotel, Arusha"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Tarangire National Park",
-        "body": [
-          "A full day of game driving through Tarangire, known for large elephant herds, baobab groves and the Tarangire River. Lunch is a picnic in the park."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury lodge or camp, Tarangire"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Serengeti National Park",
-        "body": [
-          "Drive through the Ngorongoro Conservation Area and descend to the plains. An afternoon game drive around Seronera looks for lions, leopards and cheetahs."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Final game drive and flight to Arusha",
-        "body": [
-          "A last early drive in the central Serengeti, then a scheduled flight back to Arusha for your onward travel."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch box"
-        }
-      }
-    ],
-    "inclusions": [
-      "Domestic flight from the Serengeti to Arusha",
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 3000,
-    "price_from": 3000,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/tarangire-13-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "5-day-luxury-wildebeest-migration-safari",
-    "title": "5 Day Luxury Wildebeest Migration Safari (Serengeti Focus)",
-    "category": "safari",
-    "subcategory": "Luxury",
-    "tags": [
-      "luxury",
-      "migration"
-    ],
-    "type": "Private",
-    "days": 5,
-    "overview": [
-      "Five days built around the Serengeti and the Great Migration, with three nights inside the park so your guide can follow the herds. The trip starts in Tarangire and finishes with a morning in Ngorongoro Crater."
-    ],
-    "highlights": [
-      "Three nights in the Serengeti",
-      "Follow the migration herds",
-      "Half day in Ngorongoro Crater"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival and transfer to Tarangire",
-        "body": [
-          "After airport pickup you drive through Maasai country to Tarangire for an afternoon game drive along the river among elephant herds and baobabs."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Tarangire"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Central Serengeti",
-        "body": [
-          "Cross the Ngorongoro Conservation Area to the Serengeti and start the Seronera game drive, a stronghold for resident big cats."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Full-day migration safari",
-        "body": [
-          "Your guide positions the vehicle wherever the herds are, whether river crossings, open plains or northern routes, with chances to see lions, cheetahs and hyenas."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Extended Serengeti exploration",
-        "body": [
-          "A flexible day across kopjes, river valleys and grassland, following wildlife movements."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Serengeti"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Ngorongoro Crater and departure",
-        "body": [
-          "After an early breakfast you descend into the crater for a half-day game drive, then transfer to Arusha or Kilimanjaro airport after lunch."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 4500,
-    "price_from": 4500,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/serengeti-04-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "7-day-luxury-big-five-wildebeest-migration-safari",
-    "title": "7 Day Luxury Big Five & Wildebeest Migration Safari",
-    "category": "safari",
-    "subcategory": "Luxury",
-    "tags": [
-      "luxury",
-      "migration",
-      "big-five"
-    ],
-    "type": "Private",
-    "days": 7,
-    "overview": [
-      "A full northern-circuit safari in luxury lodges, covering Tarangire, three nights in the Serengeti, Ngorongoro Crater and Lake Manyara. Timed for the Big Five and the migration herds."
-    ],
-    "highlights": [
-      "Tarangire, Serengeti, Ngorongoro and Manyara",
-      "Three nights in the Serengeti",
-      "Crater-rim lodge at sunset"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival in Arusha",
-        "body": [
-          "Airport pickup, hotel transfer and an evening briefing with your guide."
-        ],
-        "meta": {
-          "Meals": "Dinner",
-          "Accommodation": "Hotel, Arusha"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Tarangire National Park",
-        "body": [
-          "A full day among elephants and baobabs with a picnic lunch in the park."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Tarangire"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Into the Serengeti",
-        "body": [
-          "Travel via the Ngorongoro Conservation Area. The first game drive concentrates on predators and migration herds."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Full-day Serengeti safari",
-        "body": [
-          "A flexible day over plains, river valleys and kopjes to maximise sightings."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Serengeti"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Serengeti to Ngorongoro",
-        "body": [
-          "A morning game drive, then on to a crater-rim lodge in time for sunset over the caldera."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Crater-rim lodge, Ngorongoro"
-        }
-      },
-      {
-        "day": 6,
-        "title": "Ngorongoro Crater and Lake Manyara",
-        "body": [
-          "Half a day on the crater floor, a picnic lunch, then the drive to Lake Manyara."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Lodge, Lake Manyara"
-        }
-      },
-      {
-        "day": 7,
-        "title": "Lake Manyara and return to Arusha",
-        "body": [
-          "A morning game drive for flamingos, elephants and tree-climbing lions, then transfer to Arusha for your flight."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 5900,
-    "price_from": 5900,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/tarangire-15-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "4-day-luxury-serengeti-hot-air-balloon-safari",
-    "title": "4 Day Luxury Serengeti Hot Air Balloon Safari",
-    "category": "safari",
-    "subcategory": "Luxury",
-    "tags": [
-      "luxury",
-      "balloon"
-    ],
-    "type": "Private",
-    "days": 4,
-    "overview": [
-      "Fly over the Serengeti plains at sunrise in a hot air balloon, land to a champagne bush breakfast, and add game drives and a morning in Ngorongoro Crater."
-    ],
-    "highlights": [
-      "Sunrise balloon flight",
-      "Champagne bush breakfast",
-      "Ngorongoro Crater game drive"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival and Central Serengeti game drive",
-        "body": [
-          "Transfer from the airport across the Ngorongoro Highlands to the Serengeti, with an afternoon game drive."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Luxury camp or lodge, Serengeti"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Balloon safari and full-day game drive",
-        "body": [
-          "Leave before dawn for a balloon flight over the plains, then a champagne breakfast in the bush and a full day of game driving."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Serengeti morning drive and transfer to Ngorongoro",
-        "body": [
-          "An early game drive over kopjes and river valleys, then the drive to a lodge on the crater rim."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Crater-rim lodge, Ngorongoro"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Ngorongoro Crater and departure",
-        "body": [
-          "Descend early for a half-day game drive, picnic lunch, then return to Arusha or Kilimanjaro airport."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Serengeti hot air balloon flight with champagne bush breakfast",
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Balloon flights depend on weather. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 3500,
-    "price_from": 3500,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/serengeti-03-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "6-day-luxury-great-migration-river-crossing-safari",
-    "title": "6 Day Luxury Great Migration River Crossing Safari (Northern Serengeti)",
-    "category": "safari",
-    "subcategory": "Luxury",
-    "tags": [
-      "luxury",
-      "migration"
-    ],
-    "type": "Private",
-    "days": 6,
-    "overview": [
-      "Stay two nights in the northern Serengeti close to the Mara River crossing points, the best place to see the migration from July to October. The route starts at Lake Manyara and ends in Ngorongoro Crater."
-    ],
-    "highlights": [
-      "Two nights near the Mara River",
-      "Best from July to October",
-      "Lake Manyara and Ngorongoro Crater"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Lake Manyara National Park",
-        "body": [
-          "Airport pickup, then an afternoon game drive for flamingos, elephants and tree-climbing lions."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Luxury lodge, Lake Manyara"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Journey to the northern Serengeti",
-        "body": [
-          "A long scenic drive through the Ngorongoro highlands and the central Serengeti into the northern migration zone."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Northern Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Mara River crossing safari",
-        "body": [
-          "A full day following the herds along the Mara River, positioned near active crossing points."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Northern Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "More migration action",
-        "body": [
-          "A second full day at the northern hotspots for more chances to see crossings and predators."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Luxury camp, Northern Serengeti"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Serengeti to the Ngorongoro rim",
-        "body": [
-          "A last morning game drive, then the drive south to a crater-rim lodge for sunset over the caldera."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Crater-rim lodge, Ngorongoro"
-        }
-      },
-      {
-        "day": 6,
-        "title": "Ngorongoro Crater and departure",
-        "body": [
-          "Half a day on the crater floor for rhinos, lions, elephants and flamingos, then a picnic lunch and transfer to the airport."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "River crossings cannot be guaranteed; they depend on the herds. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 4800,
-    "price_from": 4800,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/serengeti-04-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "5-day-midrange-migration-safari",
-    "title": "5 Day Midrange Migration Safari",
-    "category": "safari",
-    "subcategory": "Midrange",
-    "tags": [
-      "midrange",
-      "migration"
-    ],
-    "type": "Private",
-    "days": 5,
-    "overview": [
-      "A midrange five-day safari timed for the July to October migration, with nights in Tarangire, Central Serengeti and the northern Serengeti near the Mara River."
-    ],
-    "highlights": [
-      "Mara River migration viewing",
-      "Tarangire elephants",
-      "Ngorongoro Crater finale"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Tarangire National Park",
-        "body": [
-          "Drive from Arusha for an afternoon game drive for elephants and other wildlife along the Tarangire River."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Midrange lodge, Tarangire"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Central Serengeti",
-        "body": [
-          "Enter via Naabi Hill Gate and game-drive Seronera, a hub for predators and migrating herds."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Tented camp, Central Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Northern Serengeti",
-        "body": [
-          "Head north to the Mara River, where your guide tracks herd movements and crossing activity."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Migration camp, Northern Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Back to Central Serengeti",
-        "body": [
-          "Spend the morning on migration viewing in the north, then drive south with game viewing along the way."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Tented camp, Central Serengeti"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Ngorongoro Crater",
-        "body": [
-          "Descend about 600 metres for a full crater game drive with a picnic lunch, then return to Arusha."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Binoculars and a wildlife guidebook",
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "An optional hot air balloon flight can be added. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 2000,
-    "price_from": 2000,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/serengeti-04-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "3-day-serengeti-hot-air-balloon-safari",
-    "title": "3 Day Serengeti Hot Air Balloon Safari",
-    "category": "safari",
-    "subcategory": "Balloon",
-    "tags": [
-      "balloon",
-      "luxury"
-    ],
-    "type": "Private",
-    "days": 3,
-    "overview": [
-      "A quick Serengeti break built around a sunrise balloon flight and a champagne breakfast in the bush, with game drives either side. You drive in and out from Arusha."
-    ],
-    "highlights": [
-      "Sunrise balloon flight",
-      "Champagne bush breakfast",
-      "Full-day Serengeti game drive"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arrival and Central Serengeti",
-        "body": [
-          "An early start from Arusha through the Ngorongoro Conservation Area into the Serengeti, with an afternoon game drive for lions, elephants, giraffes and zebras."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Tented camp or lodge, Central Serengeti"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Sunrise balloon safari and full game drive",
-        "body": [
-          "Travel to the launch site before dawn for a balloon flight, then a champagne breakfast in the bush and a full day of game driving."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Lodge or tented camp, Central Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Final game drive and return to Arusha",
-        "body": [
-          "An early game drive, breakfast, and the scenic drive back to Arusha with hotel or airport drop-off in the afternoon."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Serengeti hot air balloon flight with champagne bush breakfast",
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Balloon flights depend on weather. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 1900,
-    "price_from": 1900,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/serengeti-02.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "5-day-midrange-serengeti-ngorongoro-safari",
-    "title": "5 Day Midrange Safari: Serengeti & Ngorongoro Crater",
-    "category": "safari",
-    "subcategory": "Midrange",
-    "tags": [
-      "midrange"
-    ],
-    "type": "Private",
-    "days": 5,
-    "overview": [
-      "Three nights in the Serengeti and a night on the Ngorongoro rim: a simple midrange route that puts the time where the wildlife is."
-    ],
-    "highlights": [
-      "Three nights in the Serengeti",
-      "Seronera big cats",
-      "Ngorongoro Crater floor"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Arusha to the Serengeti",
-        "body": [
-          "Drive through the Ngorongoro highlands with a picnic lunch, then an afternoon game drive."
-        ],
-        "meta": {
-          "Meals": "Lunch, Dinner",
-          "Accommodation": "Midrange camp, Serengeti"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Full-day Serengeti game drive",
-        "body": [
-          "Track big cats and seasonal herds with a bush picnic lunch."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Midrange camp, Serengeti"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Serengeti exploration",
-        "body": [
-          "Morning and afternoon drives, for example in the Seronera Valley, depending on animal movement."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Midrange camp, Serengeti"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Serengeti to Ngorongoro",
-        "body": [
-          "A morning game drive, then transfer to the conservation area and an afternoon at a crater-rim lodge."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Crater-rim lodge, Ngorongoro"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Crater safari and return",
-        "body": [
-          "An early descent for a half-day game drive, then lunch and the drive back to Arusha."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch"
-        }
-      }
-    ],
-    "inclusions": [
-      "Private 4x4 safari vehicle with pop-up roof",
-      "English-speaking professional driver-guide",
-      "National park, conservation and crater fees",
-      "Accommodation and meals as listed in the itinerary",
-      "Airport transfers",
-      "Bottled drinking water on game drives",
-      "Government taxes and VAT"
-    ],
-    "exclusions": [
-      "International flights and visa fees",
-      "Travel and medical insurance (required for Tanzania)",
-      "Alcoholic and soft drinks",
-      "Tips for your guide and camp staff",
-      "Personal expenses and souvenirs",
-      "Optional activities not listed in the itinerary"
-    ],
-    "notes": [
-      "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
-    ],
-    "price_tiers": [],
-    "price_single": 2050,
-    "price_from": 2050,
-    "price_note": "From, per person, based on two travellers sharing.",
-    "image": "assets/img/ngorongoro-09-card.webp",
-    "source": "web-import-v1",
-    "sort": 600
-  },
-  {
-    "slug": "10-day-mount-kilimanjaro-climbing-via-lemosho-route-day-summit",
-    "title": "10 Day Mount Kilimanjaro Climb via Lemosho Route (Daylight Summit)",
-    "category": "trekking",
-    "type": "",
-    "days": 10,
-    "overview": [
-      "A slow, scenic Lemosho ascent from the west with extra acclimatisation days and a daylight summit push to Uhuru Peak. The long schedule raises summit success rates."
-    ],
-    "highlights": [
-      "Lemosho route",
-      "Daylight summit",
-      "Uhuru Peak, 5,895 m"
-    ],
-    "itinerary": [
-      {
-        "day": 0,
-        "title": "Arrival in Tanzania",
-        "body": [
-          "Arrive at Kilimanjaro airport, transfer to Arusha and meet your guide for a briefing and gear check."
-        ],
-        "meta": {
-          "Meals": "Dinner",
-          "Accommodation": "Hotel, Arusha"
-        }
-      },
-      {
-        "day": 1,
-        "title": "Arusha to Londorossi Gate and Big Tree Camp",
-        "body": [
-          "Drive to the western gate, register, and walk through humid rainforest to camp."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Big Tree Camp",
-          "Elevation": "Gate 2,100 m"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Big Tree Camp to Shira 1 Camp",
-        "body": [
-          "Climb out of the forest into open moorland."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Shira 1 Camp"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Shira 1 to Shira 2 Camp",
-        "body": [
-          "A gentle crossing of the Shira Plateau with views of Mount Meru."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Shira 2 Camp",
-          "Elevation": "About 3,500 m"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Shira 2 to Moir Camp",
-        "body": [
-          "Move to a quieter area with optional ridge walks for acclimatisation."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Moir Camp"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Moir Camp to Barranco Camp via Lava Tower",
-        "body": [
-          "Climb to Lava Tower, then descend into the Barranco Valley to sleep lower."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Barranco Camp",
-          "Elevation": "Lava Tower 4,630 m"
-        }
-      },
-      {
-        "day": 6,
-        "title": "Barranco to Karanga Camp",
-        "body": [
-          "Climb the Barranco Wall, then cross ridges and valleys."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Karanga Camp"
-        }
-      },
-      {
-        "day": 7,
-        "title": "Karanga to Barafu Camp",
-        "body": [
-          "Walk through alpine desert to base camp and rest early. An optional upgrade stays at Kosovo Camp."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Barafu Camp",
-          "Elevation": "Barafu 4,640 m"
-        }
-      },
-      {
-        "day": 8,
-        "title": "Summit day: Uhuru Peak",
-        "body": [
-          "Start at dawn, climb in daylight to the roof of Africa, then descend to Barafu."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Barafu Camp",
-          "Elevation": "Summit 5,895 m"
-        }
-      },
-      {
-        "day": 9,
-        "title": "Barafu to Mweka Camp",
-        "body": [
-          "Descend through alpine desert and moorland into forest."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Mweka Camp"
-        }
-      },
-      {
-        "day": 10,
-        "title": "Mweka Camp to Mweka Gate",
-        "body": [
-          "Walk down through the rainforest, collect your summit certificate and return to Arusha for a celebration dinner."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Hotel, Arusha"
-        }
-      }
-    ],
-    "inclusions": [
-      "National park, camping or hut and rescue fees plus 18% VAT",
-      "Certified English-speaking head guide, assistant guides, cook and porters",
-      "Mountain tents, sleeping mats, mess tent and toilet tent",
-      "All meals on the mountain and purified drinking water",
-      "Emergency oxygen, pulse oximeter and first-aid kit",
-      "Airport transfers and trailhead transport",
-      "Pre-climb briefing and gear check"
-    ],
-    "exclusions": [
-      "International and domestic flights",
-      "Tanzania visa fees",
-      "Crew tips (suggested USD 250 to 350 per climber)",
-      "Personal gear (rental available)",
-      "Travel and medical insurance with high-altitude evacuation cover",
-      "Alcohol and personal items"
-    ],
-    "notes": [
-      "Prices fall as the group grows. Confirm your quote with your dates."
-    ],
-    "price_tiers": [
-      {
-        "pax": 1,
-        "usd": 4092
-      },
-      {
-        "pax": 2,
-        "usd": 3647
-      },
-      {
-        "pax": 3,
-        "usd": 3495
-      },
-      {
-        "pax": 4,
-        "usd": 3475
-      },
-      {
-        "pax": 5,
-        "usd": 3350
-      },
-      {
-        "pax": 6,
-        "usd": 3297
-      },
-      {
-        "pax": 7,
-        "usd": 3231
-      }
-    ],
-    "price_single": null,
-    "price_from": 3231,
-    "price_note": "Price per person by group size.",
-    "image": "assets/img/kilimanjaro-04-card.webp",
-    "source": "web-import-v1",
-    "sort": 700
-  },
-  {
-    "slug": "10-day-mount-kilimanjaro-climbing-via-northern-circuit-route-day-summit",
-    "title": "10 Day Mount Kilimanjaro Climb via Northern Circuit (Daylight Summit)",
-    "category": "trekking",
-    "type": "",
-    "days": 10,
-    "overview": [
-      "The Northern Circuit is Kilimanjaro's longest and most gradual route, looping around the quiet northern slopes. It suits climbers who want the best acclimatisation and the fewest crowds."
-    ],
-    "highlights": [
-      "Northern Circuit",
-      "Quietest side of the mountain",
-      "Uhuru Peak, 5,895 m"
-    ],
-    "itinerary": [
-      {
-        "day": 0,
-        "title": "Arrival in Tanzania",
-        "body": [
-          "Arrive at Kilimanjaro airport, transfer to Arusha and meet your guide for a briefing and gear check."
-        ],
-        "meta": {
-          "Meals": "Dinner",
-          "Accommodation": "Hotel, Arusha"
-        }
-      },
-      {
-        "day": 1,
-        "title": "Arusha to Londorossi Gate and Big Tree Camp",
-        "body": [
-          "Drive to the western gate, register, and walk through humid rainforest to camp."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Big Tree Camp",
-          "Elevation": "Gate 2,100 m"
-        }
-      },
-      {
-        "day": 2,
-        "title": "Big Tree Camp to Shira 1 Camp",
-        "body": [
-          "Climb out of the forest into open moorland."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Shira 1 Camp"
-        }
-      },
-      {
-        "day": 3,
-        "title": "Shira 1 to Shira 2 Camp",
-        "body": [
-          "A gentle crossing of the Shira Plateau with views of Mount Meru."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Shira 2 Camp",
-          "Elevation": "About 3,500 m"
-        }
-      },
-      {
-        "day": 4,
-        "title": "Shira 2 to Moir Camp",
-        "body": [
-          "Move to a quieter area with optional ridge walks for acclimatisation."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Moir Camp"
-        }
-      },
-      {
-        "day": 5,
-        "title": "Moir Camp to Buffalo Camp",
-        "body": [
-          "A quiet northern section with views toward Kenya."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Buffalo Camp"
-        }
-      },
-      {
-        "day": 6,
-        "title": "Buffalo Camp to Third Cave Camp",
-        "body": [
-          "A sheltered acclimatisation stage."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Third Cave Camp"
-        }
-      },
-      {
-        "day": 7,
-        "title": "Third Cave Camp to School Hut",
-        "body": [
-          "Climb through alpine desert and rest early before the summit push."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "School Hut",
-          "Elevation": "School Hut 4,750 m"
-        }
-      },
-      {
-        "day": 8,
-        "title": "School Hut to Uhuru Peak",
-        "body": [
-          "Summit in daylight, then descend to Barafu Camp to recover."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Barafu Camp",
-          "Elevation": "Summit 5,895 m"
-        }
-      },
-      {
-        "day": 9,
-        "title": "Barafu to Mweka Camp",
-        "body": [
-          "Descend through alpine terrain back into the forest."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Mweka Camp"
-        }
-      },
-      {
-        "day": 10,
-        "title": "Mweka Camp to Mweka Gate",
-        "body": [
-          "Walk down through the rainforest, collect your summit certificate and return to Arusha for a celebration dinner."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch, Dinner",
-          "Accommodation": "Hotel, Arusha"
-        }
-      }
-    ],
-    "inclusions": [
-      "National park, camping or hut and rescue fees plus 18% VAT",
-      "Certified English-speaking head guide, assistant guides, cook and porters",
-      "Mountain tents, sleeping mats, mess tent and toilet tent",
-      "All meals on the mountain and purified drinking water",
-      "Emergency oxygen, pulse oximeter and first-aid kit",
-      "Airport transfers and trailhead transport",
-      "Pre-climb briefing and gear check"
-    ],
-    "exclusions": [
-      "International and domestic flights",
-      "Tanzania visa fees",
-      "Crew tips (suggested USD 250 to 350 per climber)",
-      "Personal gear (rental available)",
-      "Travel and medical insurance with high-altitude evacuation cover",
-      "Alcohol and personal items"
-    ],
-    "notes": [
-      "Prices fall as the group grows. Confirm your quote with your dates."
-    ],
-    "price_tiers": [
-      {
-        "pax": 1,
-        "usd": 4092
-      },
-      {
-        "pax": 2,
-        "usd": 3647
-      },
-      {
-        "pax": 3,
-        "usd": 3495
-      },
-      {
-        "pax": 4,
-        "usd": 3475
-      },
-      {
-        "pax": 5,
-        "usd": 3350
-      },
-      {
-        "pax": 6,
-        "usd": 3297
-      },
-      {
-        "pax": 7,
-        "usd": 3231
-      }
-    ],
-    "price_single": null,
-    "price_from": 3231,
-    "price_note": "Price per person by group size.",
-    "image": "assets/img/kilimanjaro-08-card.webp",
-    "source": "web-import-v1",
-    "sort": 700
-  },
-  {
-    "slug": "1-day-kilimanjaro-day-hike-via-lemosho-route",
-    "title": "1 Day Kilimanjaro Day Hike via Lemosho Route",
-    "category": "trekking",
-    "type": "",
-    "days": 1,
-    "overview": [
-      "A one-day walk on the western side of Kilimanjaro for people who want the mountain without a multi-day climb. You hike from Londorossi Gate through montane forest to the Shira Plateau at about 3,600 m."
-    ],
-    "highlights": [
-      "No camping",
-      "Shira Plateau views",
-      "Lemosho route"
-    ],
-    "itinerary": [
-      {
-        "day": 1,
-        "title": "Londorossi Gate to the Shira Plateau",
-        "body": [
-          "Early pickup from Arusha or Moshi (2.5 to 3.5 hours), breakfast, then a demanding hike through forest to the plateau. Stop for lunch there or continue toward Shira 1 Camp and Lion Gorge, then return to the gate and transfer back."
-        ],
-        "meta": {
-          "Meals": "Breakfast, Lunch box",
-          "Accommodation": "None, return same day",
-          "Elevation": "Up to 3,600 m"
-        }
-      }
-    ],
-    "inclusions": [
-      "Pickup and drop-off",
-      "English-speaking driver",
-      "Professional trekking guide",
-      "Lunch box and water",
-      "Park fees and taxes"
-    ],
-    "exclusions": [
-      "Personal items and hiking gear",
-      "Guide gratuities",
-      "Extra transfers after the trek",
-      "Travel insurance (required for Tanzania)"
-    ],
-    "notes": [
-      "Prices fall as the group grows. Confirm your quote with your dates."
-    ],
-    "price_tiers": [
-      {
-        "pax": 1,
-        "usd": 530
-      },
-      {
-        "pax": 2,
-        "usd": 450
-      },
-      {
-        "pax": 4,
-        "usd": 390
-      },
-      {
-        "pax": 6,
-        "usd": 320
-      }
-    ],
-    "price_single": null,
-    "price_from": 320,
-    "price_note": "Price per person by group size (1, 2 to 3, 4 to 5, 6 to 7).",
-    "image": "assets/img/kilimanjaro-06-card.webp",
-    "source": "web-import-v1",
-    "sort": 700
-  }
+ {
+  "slug": "4-day-luxury-tanzania-safari",
+  "title": "4-Day Luxury Safari with Fly-Back",
+  "category": "safari",
+  "subcategory": "Luxury",
+  "tags": [
+   "luxury",
+   "fly-out"
+  ],
+  "type": "Private",
+  "days": 4,
+  "overview": [
+   "A short, comfortable safari for travellers who want premium lodges and the Serengeti in four days, flying back to Arusha at the end."
+  ],
+  "highlights": [
+   "Premium lodges",
+   "Tarangire and Serengeti",
+   "Scenic flight back",
+   "Short itinerary"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arrival in Arusha",
+    "body": [
+     "We meet you at Kilimanjaro or Arusha airport and take you to a luxury hotel in Arusha. In the evening your guide runs a safari briefing."
+    ],
+    "meta": {
+     "Meals": "Dinner",
+     "Accommodation": "Luxury hotel, Arusha"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Tarangire National Park",
+    "body": [
+     "A full day of game driving through Tarangire, known for large elephant herds, baobab groves and the Tarangire River. Lunch is a picnic in the park."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury lodge or camp, Tarangire"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Serengeti National Park",
+    "body": [
+     "Drive through the Ngorongoro Conservation Area and descend to the plains. An afternoon game drive around Seronera looks for lions, leopards and cheetahs."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Final game drive and flight to Arusha",
+    "body": [
+     "A last early drive in the central Serengeti, then a scheduled flight back to Arusha for your onward travel."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch box"
+    }
+   }
+  ],
+  "inclusions": [
+   "Domestic flight from the Serengeti to Arusha",
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 3000,
+  "price_from": 3000,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/tarangire-13-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "5-day-luxury-wildebeest-migration-safari",
+  "title": "5-Day Luxury Serengeti Migration Safari",
+  "category": "safari",
+  "subcategory": "Luxury",
+  "tags": [
+   "luxury",
+   "migration"
+  ],
+  "type": "Private",
+  "days": 5,
+  "overview": [
+   "Five days focused on the Serengeti herds, with high-end camps that follow the migration and a private guide."
+  ],
+  "highlights": [
+   "Migration-focused",
+   "Luxury camps",
+   "Private guide",
+   "Serengeti-only itinerary"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arrival and transfer to Tarangire",
+    "body": [
+     "After airport pickup you drive through Maasai country to Tarangire for an afternoon game drive along the river among elephant herds and baobabs."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Tarangire"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Central Serengeti",
+    "body": [
+     "Cross the Ngorongoro Conservation Area to the Serengeti and start the Seronera game drive, a stronghold for resident big cats."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Full-day migration safari",
+    "body": [
+     "Your guide positions the vehicle wherever the herds are, whether river crossings, open plains or northern routes, with chances to see lions, cheetahs and hyenas."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Extended Serengeti exploration",
+    "body": [
+     "A flexible day across kopjes, river valleys and grassland, following wildlife movements."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Serengeti"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Ngorongoro Crater and departure",
+    "body": [
+     "After an early breakfast you descend into the crater for a half-day game drive, then transfer to Arusha or Kilimanjaro airport after lunch."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 4500,
+  "price_from": 4500,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/serengeti-04-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "7-day-luxury-big-five-wildebeest-migration-safari",
+  "title": "7-Day Luxury Big Five and Migration Safari",
+  "category": "safari",
+  "subcategory": "Luxury",
+  "tags": [
+   "luxury",
+   "migration",
+   "big-five"
+  ],
+  "type": "Private",
+  "days": 7,
+  "overview": [
+   "Look for all five of the big game species and the migration in a week, staying in top camps throughout."
+  ],
+  "highlights": [
+   "Big Five opportunities",
+   "Migration herds",
+   "Top-tier camps",
+   "Private guide"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arrival in Arusha",
+    "body": [
+     "Airport pickup, hotel transfer and an evening briefing with your guide."
+    ],
+    "meta": {
+     "Meals": "Dinner",
+     "Accommodation": "Hotel, Arusha"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Tarangire National Park",
+    "body": [
+     "A full day among elephants and baobabs with a picnic lunch in the park."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Tarangire"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Into the Serengeti",
+    "body": [
+     "Travel via the Ngorongoro Conservation Area. The first game drive concentrates on predators and migration herds."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Full-day Serengeti safari",
+    "body": [
+     "A flexible day over plains, river valleys and kopjes to maximise sightings."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Serengeti"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Serengeti to Ngorongoro",
+    "body": [
+     "A morning game drive, then on to a crater-rim lodge in time for sunset over the caldera."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Crater-rim lodge, Ngorongoro"
+    }
+   },
+   {
+    "day": 6,
+    "title": "Ngorongoro Crater and Lake Manyara",
+    "body": [
+     "Half a day on the crater floor, a picnic lunch, then the drive to Lake Manyara."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Lodge, Lake Manyara"
+    }
+   },
+   {
+    "day": 7,
+    "title": "Lake Manyara and return to Arusha",
+    "body": [
+     "A morning game drive for flamingos, elephants and tree-climbing lions, then transfer to Arusha for your flight."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 5900,
+  "price_from": 5900,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/tarangire-15-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "4-day-luxury-serengeti-hot-air-balloon-safari",
+  "title": "4-Day Luxury Serengeti Safari with Balloon Flight",
+  "category": "safari",
+  "subcategory": "Luxury",
+  "tags": [
+   "luxury",
+   "balloon"
+  ],
+  "type": "Private",
+  "days": 4,
+  "overview": [
+   "A short premium trip that includes a sunrise hot air balloon over the plains."
+  ],
+  "highlights": [
+   "Sunrise balloon flight",
+   "Luxury lodges",
+   "Game drives",
+   "Short itinerary"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arrival and Central Serengeti game drive",
+    "body": [
+     "Transfer from the airport across the Ngorongoro Highlands to the Serengeti, with an afternoon game drive."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Luxury camp or lodge, Serengeti"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Balloon safari and full-day game drive",
+    "body": [
+     "Leave before dawn for a balloon flight over the plains, then a champagne breakfast in the bush and a full day of game driving."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Serengeti morning drive and transfer to Ngorongoro",
+    "body": [
+     "An early game drive over kopjes and river valleys, then the drive to a lodge on the crater rim."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Crater-rim lodge, Ngorongoro"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Ngorongoro Crater and departure",
+    "body": [
+     "Descend early for a half-day game drive, picnic lunch, then return to Arusha or Kilimanjaro airport."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Serengeti hot air balloon flight with champagne bush breakfast",
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Balloon flights depend on weather. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 3500,
+  "price_from": 3500,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/serengeti-03-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "6-day-luxury-great-migration-river-crossing-safari",
+  "title": "6-Day Luxury Mara River Crossing Safari",
+  "category": "safari",
+  "subcategory": "Luxury",
+  "tags": [
+   "luxury",
+   "migration"
+  ],
+  "type": "Private",
+  "days": 6,
+  "overview": [
+   "Stay in the northern Serengeti where the herds cross the Mara River, in upscale camps with a private guide."
+  ],
+  "highlights": [
+   "Northern Serengeti camps",
+   "River crossing opportunities",
+   "Private guide",
+   "Luxury comfort"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Lake Manyara National Park",
+    "body": [
+     "Airport pickup, then an afternoon game drive for flamingos, elephants and tree-climbing lions."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Luxury lodge, Lake Manyara"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Journey to the northern Serengeti",
+    "body": [
+     "A long scenic drive through the Ngorongoro highlands and the central Serengeti into the northern migration zone."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Northern Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Mara River crossing safari",
+    "body": [
+     "A full day following the herds along the Mara River, positioned near active crossing points."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Northern Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "More migration action",
+    "body": [
+     "A second full day at the northern hotspots for more chances to see crossings and predators."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Luxury camp, Northern Serengeti"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Serengeti to the Ngorongoro rim",
+    "body": [
+     "A last morning game drive, then the drive south to a crater-rim lodge for sunset over the caldera."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Crater-rim lodge, Ngorongoro"
+    }
+   },
+   {
+    "day": 6,
+    "title": "Ngorongoro Crater and departure",
+    "body": [
+     "Half a day on the crater floor for rhinos, lions, elephants and flamingos, then a picnic lunch and transfer to the airport."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "River crossings cannot be guaranteed; they depend on the herds. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 4800,
+  "price_from": 4800,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/serengeti-04-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "5-day-midrange-migration-safari",
+  "title": "5-Day Midrange Migration Safari",
+  "category": "safari",
+  "subcategory": "Midrange",
+  "tags": [
+   "midrange",
+   "migration"
+  ],
+  "type": "Private",
+  "days": 5,
+  "overview": [
+   "A five-day trip following the herds at midrange prices, with comfortable lodges and a private vehicle."
+  ],
+  "highlights": [
+   "Migration focus",
+   "Midrange lodges",
+   "Private vehicle",
+   "Five days"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Tarangire National Park",
+    "body": [
+     "Drive from Arusha for an afternoon game drive for elephants and other wildlife along the Tarangire River."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Midrange lodge, Tarangire"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Central Serengeti",
+    "body": [
+     "Enter via Naabi Hill Gate and game-drive Seronera, a hub for predators and migrating herds."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Tented camp, Central Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Northern Serengeti",
+    "body": [
+     "Head north to the Mara River, where your guide tracks herd movements and crossing activity."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Migration camp, Northern Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Back to Central Serengeti",
+    "body": [
+     "Spend the morning on migration viewing in the north, then drive south with game viewing along the way."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Tented camp, Central Serengeti"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Ngorongoro Crater",
+    "body": [
+     "Descend about 600 metres for a full crater game drive with a picnic lunch, then return to Arusha."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Binoculars and a wildlife guidebook",
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "An optional hot air balloon flight can be added. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 2000,
+  "price_from": 2000,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/serengeti-04-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "3-day-serengeti-hot-air-balloon-safari",
+  "title": "3-Day Serengeti Safari with Balloon Flight",
+  "category": "safari",
+  "subcategory": "Balloon",
+  "tags": [
+   "balloon",
+   "luxury"
+  ],
+  "type": "Private",
+  "days": 3,
+  "overview": [
+   "A short Serengeti safari that includes a sunrise hot air balloon ride across the plains."
+  ],
+  "highlights": [
+   "Hot air balloon flight",
+   "Serengeti game drives",
+   "Lodge nights",
+   "Short trip"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arrival and Central Serengeti",
+    "body": [
+     "An early start from Arusha through the Ngorongoro Conservation Area into the Serengeti, with an afternoon game drive for lions, elephants, giraffes and zebras."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Tented camp or lodge, Central Serengeti"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Sunrise balloon safari and full game drive",
+    "body": [
+     "Travel to the launch site before dawn for a balloon flight, then a champagne breakfast in the bush and a full day of game driving."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Lodge or tented camp, Central Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Final game drive and return to Arusha",
+    "body": [
+     "An early game drive, breakfast, and the scenic drive back to Arusha with hotel or airport drop-off in the afternoon."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Serengeti hot air balloon flight with champagne bush breakfast",
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Balloon flights depend on weather. Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 1900,
+  "price_from": 1900,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/serengeti-02.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "5-day-midrange-serengeti-ngorongoro-safari",
+  "title": "5-Day Midrange Safari: Serengeti and Ngorongoro Crater",
+  "category": "safari",
+  "subcategory": "Midrange",
+  "tags": [
+   "midrange"
+  ],
+  "type": "Private",
+  "days": 5,
+  "overview": [
+   "Two big names in five days. Midrange lodges, a private vehicle and a full day on the crater floor."
+  ],
+  "highlights": [
+   "Serengeti nights",
+   "Crater floor",
+   "Midrange lodges",
+   "Private 4x4"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Arusha to the Serengeti",
+    "body": [
+     "Drive through the Ngorongoro highlands with a picnic lunch, then an afternoon game drive."
+    ],
+    "meta": {
+     "Meals": "Lunch, Dinner",
+     "Accommodation": "Midrange camp, Serengeti"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Full-day Serengeti game drive",
+    "body": [
+     "Track big cats and seasonal herds with a bush picnic lunch."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Midrange camp, Serengeti"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Serengeti exploration",
+    "body": [
+     "Morning and afternoon drives, for example in the Seronera Valley, depending on animal movement."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Midrange camp, Serengeti"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Serengeti to Ngorongoro",
+    "body": [
+     "A morning game drive, then transfer to the conservation area and an afternoon at a crater-rim lodge."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Crater-rim lodge, Ngorongoro"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Crater safari and return",
+    "body": [
+     "An early descent for a half-day game drive, then lunch and the drive back to Arusha."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch"
+    }
+   }
+  ],
+  "inclusions": [
+   "Private 4x4 safari vehicle with pop-up roof",
+   "English-speaking professional driver-guide",
+   "National park, conservation and crater fees",
+   "Accommodation and meals as listed in the itinerary",
+   "Airport transfers",
+   "Bottled drinking water on game drives",
+   "Government taxes and VAT"
+  ],
+  "exclusions": [
+   "International flights and visa fees",
+   "Travel and medical insurance (required for Tanzania)",
+   "Alcoholic and soft drinks",
+   "Tips for your guide and camp staff",
+   "Personal expenses and souvenirs",
+   "Optional activities not listed in the itinerary"
+  ],
+  "notes": [
+   "Final price depends on group size, travel dates and accommodation level. Request a quote with your dates."
+  ],
+  "price_tiers": [],
+  "price_single": 2050,
+  "price_from": 2050,
+  "price_note": "From, per person, based on two travellers sharing.",
+  "image": "assets/img/ngorongoro-09-card.webp",
+  "source": "web-import-v1",
+  "sort": 600
+ },
+ {
+  "slug": "10-day-mount-kilimanjaro-climbing-via-lemosho-route-day-summit",
+  "title": "10-Day Kilimanjaro Climb via Lemosho with Daylight Summit",
+  "category": "trekking",
+  "type": "",
+  "days": 10,
+  "overview": [
+   "A slow western route timed so you reach the summit area in daylight, with extra acclimatisation along the way."
+  ],
+  "highlights": [
+   "Ten days for adjustment",
+   "Daylight summit",
+   "Lemosho scenery",
+   "High success rate"
+  ],
+  "itinerary": [
+   {
+    "day": 0,
+    "title": "Arrival in Tanzania",
+    "body": [
+     "Arrive at Kilimanjaro airport, transfer to Arusha and meet your guide for a briefing and gear check."
+    ],
+    "meta": {
+     "Meals": "Dinner",
+     "Accommodation": "Hotel, Arusha"
+    }
+   },
+   {
+    "day": 1,
+    "title": "Arusha to Londorossi Gate and Big Tree Camp",
+    "body": [
+     "Drive to the western gate, register, and walk through humid rainforest to camp."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Big Tree Camp",
+     "Elevation": "Gate 2,100 m"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Big Tree Camp to Shira 1 Camp",
+    "body": [
+     "Climb out of the forest into open moorland."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Shira 1 Camp"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Shira 1 to Shira 2 Camp",
+    "body": [
+     "A gentle crossing of the Shira Plateau with views of Mount Meru."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Shira 2 Camp",
+     "Elevation": "About 3,500 m"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Shira 2 to Moir Camp",
+    "body": [
+     "Move to a quieter area with optional ridge walks for acclimatisation."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Moir Camp"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Moir Camp to Barranco Camp via Lava Tower",
+    "body": [
+     "Climb to Lava Tower, then descend into the Barranco Valley to sleep lower."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Barranco Camp",
+     "Elevation": "Lava Tower 4,630 m"
+    }
+   },
+   {
+    "day": 6,
+    "title": "Barranco to Karanga Camp",
+    "body": [
+     "Climb the Barranco Wall, then cross ridges and valleys."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Karanga Camp"
+    }
+   },
+   {
+    "day": 7,
+    "title": "Karanga to Barafu Camp",
+    "body": [
+     "Walk through alpine desert to base camp and rest early. An optional upgrade stays at Kosovo Camp."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Barafu Camp",
+     "Elevation": "Barafu 4,640 m"
+    }
+   },
+   {
+    "day": 8,
+    "title": "Summit day: Uhuru Peak",
+    "body": [
+     "Start at dawn, climb in daylight to the roof of Africa, then descend to Barafu."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Barafu Camp",
+     "Elevation": "Summit 5,895 m"
+    }
+   },
+   {
+    "day": 9,
+    "title": "Barafu to Mweka Camp",
+    "body": [
+     "Descend through alpine desert and moorland into forest."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Mweka Camp"
+    }
+   },
+   {
+    "day": 10,
+    "title": "Mweka Camp to Mweka Gate",
+    "body": [
+     "Walk down through the rainforest, collect your summit certificate and return to Arusha for a celebration dinner."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Hotel, Arusha"
+    }
+   }
+  ],
+  "inclusions": [
+   "National park, camping or hut and rescue fees plus 18% VAT",
+   "Certified English-speaking head guide, assistant guides, cook and porters",
+   "Mountain tents, sleeping mats, mess tent and toilet tent",
+   "All meals on the mountain and purified drinking water",
+   "Emergency oxygen, pulse oximeter and first-aid kit",
+   "Airport transfers and trailhead transport",
+   "Pre-climb briefing and gear check"
+  ],
+  "exclusions": [
+   "International and domestic flights",
+   "Tanzania visa fees",
+   "Crew tips (suggested USD 250 to 350 per climber)",
+   "Personal gear (rental available)",
+   "Travel and medical insurance with high-altitude evacuation cover",
+   "Alcohol and personal items"
+  ],
+  "notes": [
+   "Prices fall as the group grows. Confirm your quote with your dates."
+  ],
+  "price_tiers": [
+   {
+    "pax": 1,
+    "usd": 4092
+   },
+   {
+    "pax": 2,
+    "usd": 3647
+   },
+   {
+    "pax": 3,
+    "usd": 3495
+   },
+   {
+    "pax": 4,
+    "usd": 3475
+   },
+   {
+    "pax": 5,
+    "usd": 3350
+   },
+   {
+    "pax": 6,
+    "usd": 3297
+   },
+   {
+    "pax": 7,
+    "usd": 3231
+   }
+  ],
+  "price_single": null,
+  "price_from": 3231,
+  "price_note": "Price per person by group size.",
+  "image": "assets/img/kilimanjaro-04-card.webp",
+  "source": "web-import-v1",
+  "sort": 700
+ },
+ {
+  "slug": "10-day-mount-kilimanjaro-climbing-via-northern-circuit-route-day-summit",
+  "title": "10-Day Kilimanjaro Northern Circuit with Daylight Summit",
+  "category": "trekking",
+  "type": "",
+  "days": 10,
+  "overview": [
+   "The longest route, timed for a daylight summit and a slow rise through the northern slopes."
+  ],
+  "highlights": [
+   "Ten days for adjustment",
+   "Daylight summit",
+   "Northern slopes",
+   "Few trekkers"
+  ],
+  "itinerary": [
+   {
+    "day": 0,
+    "title": "Arrival in Tanzania",
+    "body": [
+     "Arrive at Kilimanjaro airport, transfer to Arusha and meet your guide for a briefing and gear check."
+    ],
+    "meta": {
+     "Meals": "Dinner",
+     "Accommodation": "Hotel, Arusha"
+    }
+   },
+   {
+    "day": 1,
+    "title": "Arusha to Londorossi Gate and Big Tree Camp",
+    "body": [
+     "Drive to the western gate, register, and walk through humid rainforest to camp."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Big Tree Camp",
+     "Elevation": "Gate 2,100 m"
+    }
+   },
+   {
+    "day": 2,
+    "title": "Big Tree Camp to Shira 1 Camp",
+    "body": [
+     "Climb out of the forest into open moorland."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Shira 1 Camp"
+    }
+   },
+   {
+    "day": 3,
+    "title": "Shira 1 to Shira 2 Camp",
+    "body": [
+     "A gentle crossing of the Shira Plateau with views of Mount Meru."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Shira 2 Camp",
+     "Elevation": "About 3,500 m"
+    }
+   },
+   {
+    "day": 4,
+    "title": "Shira 2 to Moir Camp",
+    "body": [
+     "Move to a quieter area with optional ridge walks for acclimatisation."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Moir Camp"
+    }
+   },
+   {
+    "day": 5,
+    "title": "Moir Camp to Buffalo Camp",
+    "body": [
+     "A quiet northern section with views toward Kenya."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Buffalo Camp"
+    }
+   },
+   {
+    "day": 6,
+    "title": "Buffalo Camp to Third Cave Camp",
+    "body": [
+     "A sheltered acclimatisation stage."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Third Cave Camp"
+    }
+   },
+   {
+    "day": 7,
+    "title": "Third Cave Camp to School Hut",
+    "body": [
+     "Climb through alpine desert and rest early before the summit push."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "School Hut",
+     "Elevation": "School Hut 4,750 m"
+    }
+   },
+   {
+    "day": 8,
+    "title": "School Hut to Uhuru Peak",
+    "body": [
+     "Summit in daylight, then descend to Barafu Camp to recover."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Barafu Camp",
+     "Elevation": "Summit 5,895 m"
+    }
+   },
+   {
+    "day": 9,
+    "title": "Barafu to Mweka Camp",
+    "body": [
+     "Descend through alpine terrain back into the forest."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Mweka Camp"
+    }
+   },
+   {
+    "day": 10,
+    "title": "Mweka Camp to Mweka Gate",
+    "body": [
+     "Walk down through the rainforest, collect your summit certificate and return to Arusha for a celebration dinner."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch, Dinner",
+     "Accommodation": "Hotel, Arusha"
+    }
+   }
+  ],
+  "inclusions": [
+   "National park, camping or hut and rescue fees plus 18% VAT",
+   "Certified English-speaking head guide, assistant guides, cook and porters",
+   "Mountain tents, sleeping mats, mess tent and toilet tent",
+   "All meals on the mountain and purified drinking water",
+   "Emergency oxygen, pulse oximeter and first-aid kit",
+   "Airport transfers and trailhead transport",
+   "Pre-climb briefing and gear check"
+  ],
+  "exclusions": [
+   "International and domestic flights",
+   "Tanzania visa fees",
+   "Crew tips (suggested USD 250 to 350 per climber)",
+   "Personal gear (rental available)",
+   "Travel and medical insurance with high-altitude evacuation cover",
+   "Alcohol and personal items"
+  ],
+  "notes": [
+   "Prices fall as the group grows. Confirm your quote with your dates."
+  ],
+  "price_tiers": [
+   {
+    "pax": 1,
+    "usd": 4092
+   },
+   {
+    "pax": 2,
+    "usd": 3647
+   },
+   {
+    "pax": 3,
+    "usd": 3495
+   },
+   {
+    "pax": 4,
+    "usd": 3475
+   },
+   {
+    "pax": 5,
+    "usd": 3350
+   },
+   {
+    "pax": 6,
+    "usd": 3297
+   },
+   {
+    "pax": 7,
+    "usd": 3231
+   }
+  ],
+  "price_single": null,
+  "price_from": 3231,
+  "price_note": "Price per person by group size.",
+  "image": "assets/img/kilimanjaro-08-card.webp",
+  "source": "web-import-v1",
+  "sort": 700
+ },
+ {
+  "slug": "1-day-kilimanjaro-day-hike-via-lemosho-route",
+  "title": "Kilimanjaro Day Hike on the Lemosho Route",
+  "category": "trekking",
+  "type": "",
+  "days": 1,
+  "overview": [
+   "A single day on the mountain's western slopes, through forest and moorland, for those who want a taste without committing to a climb."
+  ],
+  "highlights": [
+   "Forest and moorland",
+   "Guide included",
+   "One day only",
+   "No altitude commitment"
+  ],
+  "itinerary": [
+   {
+    "day": 1,
+    "title": "Londorossi Gate to the Shira Plateau",
+    "body": [
+     "Early pickup from Arusha or Moshi (2.5 to 3.5 hours), breakfast, then a demanding hike through forest to the plateau. Stop for lunch there or continue toward Shira 1 Camp and Lion Gorge, then return to the gate and transfer back."
+    ],
+    "meta": {
+     "Meals": "Breakfast, Lunch box",
+     "Accommodation": "None, return same day",
+     "Elevation": "Up to 3,600 m"
+    }
+   }
+  ],
+  "inclusions": [
+   "Pickup and drop-off",
+   "English-speaking driver",
+   "Professional trekking guide",
+   "Lunch box and water",
+   "Park fees and taxes"
+  ],
+  "exclusions": [
+   "Personal items and hiking gear",
+   "Guide gratuities",
+   "Extra transfers after the trek",
+   "Travel insurance (required for Tanzania)"
+  ],
+  "notes": [
+   "Prices fall as the group grows. Confirm your quote with your dates."
+  ],
+  "price_tiers": [
+   {
+    "pax": 1,
+    "usd": 530
+   },
+   {
+    "pax": 2,
+    "usd": 450
+   },
+   {
+    "pax": 4,
+    "usd": 390
+   },
+   {
+    "pax": 6,
+    "usd": 320
+   }
+  ],
+  "price_single": null,
+  "price_from": 320,
+  "price_note": "Price per person by group size (1, 2 to 3, 4 to 5, 6 to 7).",
+  "image": "assets/img/kilimanjaro-06-card.webp",
+  "source": "web-import-v1",
+  "sort": 700
+ }
 ]

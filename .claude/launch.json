@@ -6,6 +6,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start"],
       "port": 3000
+    },
+    {
+      "name": "landing-dev",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["-e", "process.env.PORT='3100';require('./landing/server.js')"],
+      "port": 3100
     }
   ]
 }
