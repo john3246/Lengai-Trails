@@ -1,7 +1,7 @@
 // PostgreSQL access (node-postgres). Connection comes from DATABASE_URL.
 //   e.g. DATABASE_URL=postgres://user:password@localhost:5432/lengai
 require('./loadEnv');
-const { Pool, types } = require('pg');
+const { Pool: PgPool, types } = require('pg');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -13,20 +13,40 @@ types.setTypeParser(1082, v => v); // DATE columns stay plain YYYY-MM-DD strings
 
 
 const DATA = process.env.DATA_DIR || path.join(__dirname, '..', 'data');
-if (!process.env.DATABASE_URL) {
-  console.error('\n[cms] DATABASE_URL is not set. Example:\n  DATABASE_URL=postgres://user:password@localhost:5432/lengai\n');
-  process.exit(1);
+// Without DATABASE_URL the site runs on a built-in in-memory database filled from the files in /data on every start.
+// That is enough to show the site: nothing is stored between restarts, and CMS edits last only until the server stops.
+let pool;
+const DEMO = !process.env.DATABASE_URL;
+if (DEMO) {
+  const { newDb, DataType } = require('pg-mem');
+  const mem = newDb({ autoCreateForeignKeyIndices: true });
+  mem.public.registerFunction({ name: 'to_regclass', args: [DataType.text], returns: DataType.text, implementation: n => { try { mem.public.getTable(n); return n; } catch { return null; } } });
+  pool = new (mem.adapters.createPg().Pool)();
+  console.log('[cms] DATABASE_URL not set: running on built-in in-memory data (demo mode)');
+} else {
+  const ssl = process.env.PGSSL === 'require' || /sslmode=require/.test(process.env.DATABASE_URL) ? { rejectUnauthorized: false } : undefined;
+  pool = new PgPool({ connectionString: process.env.DATABASE_URL, ssl, max: 10 });
 }
-const ssl = process.env.PGSSL === 'require' || /sslmode=require/.test(process.env.DATABASE_URL) ? { rejectUnauthorized: false } : undefined;
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl, max: 10 });
 pool.on('error', e => console.error('[cms] pg pool error', e.message));
 
 // "?" placeholders -> $1, $2 ...
 const conv = sql => { let i = 0; return sql.replace(/'(?:[^']|'')*'|\?/g, m => m === '?' ? '$' + (++i) : m); };
-const all = async (sql, ...p) => (await pool.query(conv(sql), p)).rows;
-const get = async (sql, ...p) => (await pool.query(conv(sql), p)).rows[0];
-const run = async (sql, ...p) => pool.query(conv(sql), p);
-const insert = async (sql, ...p) => (await pool.query(conv(sql) + ' RETURNING id', p)).rows[0].id;
+// The in-memory database has no "= ANY(array)", so there each array becomes an IN (...) list.
+const prep = (sql, p) => {
+  if (!DEMO) return [conv(sql), p];
+  let idx = 0; const np = [];
+  const out = sql.replace(/= ANY\(\?::\w+\[\]\)|'(?:[^']|'')*'|\?/g, m => {
+    if (m.startsWith('= ANY')) { const a = p[idx++] || []; if (!a.length) return 'IN (NULL)'; np.push(...a); return 'IN (' + a.map(() => '?').join(',') + ')'; }
+    if (m === '?') { np.push(p[idx++]); return '?'; }
+    return m;
+  });
+  return idx ? [conv(out), np] : [sql, p];
+};
+const q = (c, sql, p, suffix = '') => { const [s, a] = prep(sql, p); return c.query(s + suffix, a); };
+const all = async (sql, ...p) => (await q(pool, sql, p)).rows;
+const get = async (sql, ...p) => (await q(pool, sql, p)).rows[0];
+const run = async (sql, ...p) => q(pool, sql, p);
+const insert = async (sql, ...p) => (await q(pool, sql, p, ' RETURNING id')).rows[0].id;
 
 const SCHEMA_SQL = `
 CREATE TABLE IF NOT EXISTS tours (
@@ -275,6 +295,6 @@ async function seed() {
   }
 }
 const ready = seed().then(() => require('./migrate').run(pool));
-async function tx(fn) { const c = await pool.connect(); try { await c.query('BEGIN'); const r = await fn({ all: async (sql, ...p) => (await c.query(conv(sql), p)).rows, get: async (sql, ...p) => (await c.query(conv(sql), p)).rows[0], run: (sql, ...p) => c.query(conv(sql), p) }); await c.query('COMMIT'); return r; } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); } }
+async function tx(fn) { const c = await pool.connect(); try { await c.query('BEGIN'); const r = await fn({ all: async (sql, ...p) => (await q(c, sql, p)).rows, get: async (sql, ...p) => (await q(c, sql, p)).rows[0], run: (sql, ...p) => q(c, sql, p) }); await c.query('COMMIT'); return r; } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); } }
 
 module.exports = { tx, pool, all, get, run, insert, ready, J, P, tourOut, tourFromBody, hashPassword, verifyPassword, TOUR_JSON };

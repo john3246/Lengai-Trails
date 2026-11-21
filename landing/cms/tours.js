@@ -54,7 +54,7 @@ async function publicList({ category, tag, sub, mention } = {}) {
   if (mention) {
     const titleOnly = /^title:/.test(mention), k = '%' + String(mention).replace(/^title:/, '').slice(0, 80) + '%'; args.push(k);
     const n = args.length;
-    where.push(titleOnly ? `t.title ILIKE $${n}` : `(t.title ILIKE $${n} OR EXISTS (SELECT 1 FROM cms_tour_days d WHERE d.tour_id = t.id AND d.title ILIKE $${n}) OR EXISTS (SELECT 1 FROM cms_tour_days d JOIN cms_tour_day_text x ON x.day_id = d.id WHERE d.tour_id = t.id AND x.body ILIKE $${n}))`);
+    where.push(titleOnly ? `t.title ILIKE $${n}` : `(t.title ILIKE $${n} OR t.id IN (SELECT d.tour_id FROM cms_tour_days d WHERE d.title ILIKE $${n}) OR t.id IN (SELECT d.tour_id FROM cms_tour_days d JOIN cms_tour_day_text x ON x.day_id = d.id WHERE x.body ILIKE $${n}))`);
   }
   const rows = await all(`SELECT t.id, t.slug, t.title, t.category, t.subcategory, t.type, t.days, t.price_from, t.price_note, t.image, t.featured FROM cms_tours t WHERE ${where.join(' AND ')} ORDER BY t.sort, t.id`, ...args);
   const ids = rows.map(r => r.id); const c = await children(ids);

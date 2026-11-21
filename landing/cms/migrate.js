@@ -70,7 +70,7 @@ async function run(pool) {
     }
     // keep id sequences ahead of the copied ids
     const tables = ['cms_tours', ...Object.values(S).filter(r => !r.special).map(r => r.table)];
-    for (const t of tables) await c.query(`SELECT setval(pg_get_serial_sequence('${t}', 'id'), GREATEST((SELECT COALESCE(MAX(id), 0) FROM ${t}), 1), (SELECT COUNT(*) > 0 FROM ${t}))`);
+    if (process.env.DATABASE_URL) for (const t of tables) await c.query(`SELECT setval(pg_get_serial_sequence('${t}', 'id'), GREATEST((SELECT COALESCE(MAX(id), 0) FROM ${t}), 1), (SELECT COUNT(*) > 0 FROM ${t}))`);
     await c.query("INSERT INTO settings (key, value) VALUES ('relational_v1', '1') ON CONFLICT (key) DO NOTHING");
     await c.query('COMMIT');
   } catch (e) { await c.query('ROLLBACK'); throw e; } finally { c.release(); }
